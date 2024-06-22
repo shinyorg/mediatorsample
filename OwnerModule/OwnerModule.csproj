@@ -7,9 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
-        <PackageReference Include="Bogus" Version="35.5.1"/>
+        <PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.11"/>
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
+        <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
     </ItemGroup>
-
 </Project>

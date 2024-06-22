@@ -1,20 +1,22 @@
-﻿using AnimalModule;
-using VehicleModule.Services.Impl;
+﻿using VehicleModule.Services.Impl;
 
 namespace VehicleModule;
 
 
 public static class Registration
 {
-    public static IServiceCollection AddAnimalModule(this IServiceCollection services)
+    public static MauiAppBuilder AddVehicleModule(this MauiAppBuilder builder)
     {
-        services.RegisterForNavigation<DetailPage, DetailViewModel>(Routes.Detail);
-        services.RegisterForNavigation<ListPage, ListViewModel>(Routes.List);
+        // register pages/viewmodels with prism
+        builder.Services.RegisterForNavigation<DetailPage, DetailViewModel>(Routes.Detail);
+        builder.Services.RegisterForNavigation<ListPage, ListViewModel>(Routes.List);
         
-        services.AddSingleton<VehicleSqliteConnection>();
-        services.AddSingleton<IDataService, DataService>();
+        // register custom services
+        builder.Services.AddSingleton<VehicleSqliteConnection>();
+        builder.Services.AddSingleton<IDataService, DataService>();
         
-        services.AddDiscoveredMediatorHandlersFromVehicleModule(); // source gen'd
-        return services;
+        // register source generated handlers
+        builder.Services.AddDiscoveredMediatorHandlersFromVehicleModule();
+        return builder;
     }
 }

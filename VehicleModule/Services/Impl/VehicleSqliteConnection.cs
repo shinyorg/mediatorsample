@@ -5,7 +5,7 @@ namespace VehicleModule.Services.Impl;
 
 public class VehicleSqliteConnection : SQLiteAsyncConnection
 {
-    public VehicleSqliteConnection(IPlatform platform, ILogger<VehicleSqliteConnection> logger) : base(Path.Combine(platform.AppData.FullName, "animal.db"), true)
+    public VehicleSqliteConnection(IPlatform platform, ILogger<VehicleSqliteConnection> logger) : base(Path.Combine(platform.AppData.FullName, "vehicles.db"), true)
     {
         var c = this.GetConnection();
         c.CreateTable<VehicleModel>();

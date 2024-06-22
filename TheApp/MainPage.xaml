@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:TheApp"
              x:DataType="local:MainViewModel"
              x:Class="TheApp.MainPage"
+             NavigationPage.BackButtonTitle="Back"
              Title="The Mediator">
     <VerticalStackLayout>
         <Button Text="Generate Data" Command="{Binding GenerateData}" />

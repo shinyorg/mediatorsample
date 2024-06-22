@@ -84,6 +84,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\OwnerModule\OwnerModule.csproj" />
         <ProjectReference Include="..\VehicleModule\VehicleModule.csproj" />
         <ProjectReference Include="..\PeopleModule\PeopleModule.csproj"/>
         <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>

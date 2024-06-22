@@ -5,15 +5,18 @@ namespace PeopleModule;
 
 public static class Registration
 {
-    public static IServiceCollection AddPeopleModule(this IServiceCollection services)
+    public static MauiAppBuilder AddPeopleModule(this MauiAppBuilder builder)
     {
-        services.RegisterForNavigation<DetailPage, DetailViewModel>(Routes.Detail);
-        services.RegisterForNavigation<ListPage, ListViewModel>(Routes.List);
+        // register pages/viewmodels with prism
+        builder.Services.RegisterForNavigation<DetailPage, DetailViewModel>(Routes.Detail);
+        builder.Services.RegisterForNavigation<ListPage, ListViewModel>(Routes.List);
         
-        services.AddSingleton<PeopleSqliteConnection>();
-        services.AddSingleton<IDataService, DataService>();
+        // register custom services
+        builder.Services.AddSingleton<PeopleSqliteConnection>();
+        builder.Services.AddSingleton<IDataService, DataService>();
         
-        services.AddDiscoveredMediatorHandlersFromPeopleModule(); // source gen'd
-        return services;
+        // register source generated handlers
+        builder.Services.AddDiscoveredMediatorHandlersFromPeopleModule();
+        return builder;
     }
 }

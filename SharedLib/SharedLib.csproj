@@ -10,7 +10,6 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="sqlite-net-pcl" Version="1.9.172"/>
-        <PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.11"/>
         <PackageReference Include="CommunityToolkit.Maui" Version="9.0.0"/>
         <PackageReference Include="Prism.DryIoc.Maui" Version="9.0.401-pre"/>
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
@@ -21,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\OwnerModule.Contracts\OwnerModule.Contracts.csproj" />
         <ProjectReference Include="..\VehicleModule.Contracts\VehicleModule.Contracts.csproj" />
         <ProjectReference Include="..\PeopleModule.Contracts\PeopleModule.Contracts.csproj" />
     </ItemGroup>

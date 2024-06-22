@@ -1,4 +1,4 @@
-using VehicleModule.Contracts;
+using SharedLib;
 
 namespace VehicleModule.Handlers;
 
@@ -7,5 +7,5 @@ namespace VehicleModule.Handlers;
 public class DetailsNavRequestHandler : IRequestHandler<DetailNavRequest>
 {
     public Task Handle(DetailNavRequest request, CancellationToken cancellationToken)
-        => request.Navigator.NavigateAsync(Routes.Detail, (nameof(DetailNavRequest), request));
+        => request.Navigator.Navigate(Routes.Detail, request.ToNavParam());
 }

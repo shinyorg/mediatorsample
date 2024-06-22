@@ -3,6 +3,7 @@ namespace VehicleModule.Services;
 
 public interface IDataService
 {
-    Task<VehicleResult> GetById(int vehicleId);
-    Task<IReadOnlyList<VehicleResult>> GetAll();
+    Task Delete(int vehicleId, CancellationToken cancellationToken);
+    Task<VehicleResult?> GetById(int vehicleId, CancellationToken cancellationToken);
+    Task<IReadOnlyList<VehicleResult>> GetAll(CancellationToken cancellationToken);
 }

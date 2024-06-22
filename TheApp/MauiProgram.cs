@@ -1,4 +1,5 @@
 ﻿using AiForms.Settings;
+using OwnerModule;
 using VehicleModule;
 using PeopleModule;
 
@@ -12,7 +13,6 @@ public static class MauiProgram
             .CreateBuilder()
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-            .UseSettingsView()
             .UseShinyFramework(
                 new DryIocContainerExtension(),
                 prism => prism.CreateWindow("NavigationPage/MainPage"),
@@ -30,9 +30,11 @@ public static class MauiProgram
         builder.Logging.SetMinimumLevel(LogLevel.Trace);
         builder.Logging.AddDebug();
 #endif
+        
         builder.Services.AddShinyMediator(x => x.UseMaui());
-        builder.Services.AddPeopleModule();
-        builder.Services.AddAnimalModule();
+        builder.AddPeopleModule();
+        builder.AddVehicleModule();
+        builder.AddOwnerModule();
         
         builder.Services.AddDataAnnotationValidation();
         builder.Services.RegisterForNavigation<MainPage, MainViewModel>();

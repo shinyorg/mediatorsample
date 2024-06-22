@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ownerModule="clr-namespace:OwnerModule"
+             xmlns:settings="clr-namespace:AiForms.Settings;assembly=SettingsView"
+             x:DataType="ownerModule:LinkViewModel"
+             x:Class="OwnerModule.LinkPage"
+             Title="Link">
+    <ContentPage.Content>
+        <settings:SettingsView>
+        </settings:SettingsView>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,7 +6,56 @@
              x:DataType="vehicleModule:DetailViewModel"
              x:Class="VehicleModule.DetailPage"
              Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Owner" 
+                     Command="{Binding AddOwner}" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        
+        <Grid RowDefinitions="*, Auto">
+            <ScrollView Grid.Row="0">
+                <StackLayout BindableLayout.ItemsSource="{Binding Owners}">
+                    <BindableLayout.EmptyView>
+                        <Label Text="Doesn't Own Any Vehicles" 
+                               FontSize="Large"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Fill"
+                               VerticalTextAlignment="Center" />
+                    </BindableLayout.EmptyView>
+                    
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="vehicleModule:ItemViewModel">
+                            <Grid RowDefinitions="*, Auto"
+                                  ColumnDefinitions="*, Auto">
+                                
+                                <Label Text="{Binding PersonName}"
+                                       FontSize="Large">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ViewPerson}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                
+                                <Button Text="-" 
+                                        FontSize="Large" 
+                                        Command="{Binding RemoveOwner}"/>
+                                
+                                <BoxView Height="1" 
+                                         HorizontalOptions="Fill"
+                                         VerticalOptions="Center" 
+                                         BackgroundColor="Black"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            
+            <Button Text="Delete Vehicle" 
+                    Command="{Binding Delete}" 
+                    BackgroundColor="Red"
+                    TextColor="White" 
+                    Grid.Row="1" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

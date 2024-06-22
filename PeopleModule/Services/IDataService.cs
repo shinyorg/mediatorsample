@@ -2,6 +2,7 @@ namespace PeopleModule.Services;
 
 public interface IDataService
 {
-    Task<PersonResult> GetById(int personId);
-    Task<IReadOnlyList<PersonResult>> GetAll();
+    Task Delete(int personId, CancellationToken cancellationToken);
+    Task<PersonResult?> GetById(int personId, CancellationToken cancellationToken);
+    Task<IReadOnlyList<PersonResult>> GetPeople(int[] personIds, CancellationToken cancellationToken);
 }

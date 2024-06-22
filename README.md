@@ -3,9 +3,10 @@
 This shows a lot of good practices when it comes to constructing .NET MAUI applications.  
 
 ## TODO
-* Add Owner to a vehicle
-* Adding an owning, triggers an event to update data
 * Cache
+* Flush Caches on delete
+* Finish Owner Form
+* If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
 
 ## Other Libraries
 | Name                                                                    | Description                                                             |
@@ -17,6 +18,11 @@ This shows a lot of good practices when it comes to constructing .NET MAUI appli
 | [Shiny Framework](https://github.com/shinyorg/framework)                | Brings RXUI, Prism, & Shiny together with some extra toys               |
 | [Settings View](https://todo)                                           | A beautiful looking table type control for forms                        |
 | [.NET MAUI Community Toolkit](https://todo)                             | The premier toolkit for .NET MAUI                                       |
+
+## Reasons for this Engineering
+
+1. Allows cross functional teams to work enable cross functional requirements without being tightly coupled
+2. Allows each feature/module to register its own services, controls, pages, viewmodels, etc in isolation while still having access to shared functionality like logging, configuration, etc
 
 ## FAQ
 
@@ -41,3 +47,8 @@ services in Shiny Framework, but we wanted to show a safe bet on how this naviga
 Honestly, no - and you probably never should for a SQLite query.  The point to note here though is that the IDataService may be calling out to a remote
 service.  It is also a demo to show off some of what Shiny Mediator can do.  Could that service do the caching?  Absolutely.  Should it do the caching 
 at the service layer?  That's up to you to decide!
+
+> Would you really do these cross model data linking request (ie. GetPeopleByVehicleRequest, GetVehiclesByPersonRequest) - Doesn't that cause N+1 and a lot of extra chatter?
+
+Likely not because an app is generally single process.  This shows a common pattern (and often common pitfall in server side microserving).  Pick your fights &
+don't overengineer.  Well this does 

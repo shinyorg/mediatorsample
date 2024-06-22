@@ -4,6 +4,11 @@ namespace PeopleModule.Handlers;
 [RegisterHandler]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<PersonResult>>
 {
-    public Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, CancellationToken cancellationToken)
-        => data.GetAll();
+    public async Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, CancellationToken cancellationToken)
+    {
+        var personIds = request.PersonIds ?? [];
+        var people = await data.GetPeople(personIds, cancellationToken);
+
+        return people;
+    }
 }
