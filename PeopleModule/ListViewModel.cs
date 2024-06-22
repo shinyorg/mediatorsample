@@ -21,4 +21,11 @@ public class ListViewModel : ViewModel
     public ICommand Load { get; }
     [Reactive] public IReadOnlyList<PersonResult> List { get; private set; }
     [Reactive] public PersonResult? SelectedPerson { get; set; }
+
+    
+    public override void OnAppearing()
+    {
+        base.OnAppearing();
+        this.Load.Execute(null);
+    }
 }

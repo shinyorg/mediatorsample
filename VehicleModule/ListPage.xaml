@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vehicleModule="clr-namespace:VehicleModule"
              xmlns:contracts="clr-namespace:VehicleModule.Contracts;assembly=VehicleModule.Contracts"
+             NavigationPage.BackButtonTitle="Back"
              x:DataType="vehicleModule:ListViewModel"
              x:Class="VehicleModule.ListPage"
              Title="Vehicles">

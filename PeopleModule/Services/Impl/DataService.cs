@@ -10,7 +10,12 @@ public class DataService(PeopleSqliteConnection conn) : IDataService
 
     public async Task<IReadOnlyList<PersonResult>> GetAll()
     {
-        var list = await conn.People.ToListAsync();
+        var list = await conn
+            .People
+            .OrderBy(x => x.LastName)
+            .ThenBy(x => x.FirstName)
+            .ToListAsync();
+        
         return list.Select(ToResult).ToList();
     }
 

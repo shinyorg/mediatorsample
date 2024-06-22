@@ -11,7 +11,12 @@ public class DataService(VehicleSqliteConnection conn) : IDataService
 
     public async Task<IReadOnlyList<VehicleResult>> GetAll()
     {
-        var list = await conn.Vehicles.ToListAsync();
+        var list = await conn
+            .Vehicles
+            .OrderBy(x => x.Manufacturer)
+            .ThenBy(x => x.Model)
+            .ToListAsync();
+        
         return list.Select(ToResult).ToList();
     }
 
