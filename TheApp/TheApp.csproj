@@ -8,8 +8,8 @@
         <Nullable>enable</Nullable>
         <UseMaui>true</UseMaui>
 
-        <ApplicationTitle>TheApp</ApplicationTitle>
-        <ApplicationId>org.shiny.creditcardscan</ApplicationId>
+        <ApplicationTitle>Mediator Sample</ApplicationTitle>
+        <ApplicationId>org.shiny.mediatorthings</ApplicationId>
         <ApplicationIdGuid>933EAF01-214F-4BCC-AE9F-5B92D1BFE40E</ApplicationIdGuid>
 
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

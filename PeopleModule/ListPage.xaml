@@ -12,6 +12,15 @@
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedPerson}">
+                <CollectionView.EmptyView>
+                    <Label Text="No People Found"
+                           FontSize="Large" 
+                           HorizontalOptions="Fill" 
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Fill"
+                           VerticalTextAlignment="Center" />
+                </CollectionView.EmptyView>
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="contracts:PersonResult">
                         <Border Stroke="White" 

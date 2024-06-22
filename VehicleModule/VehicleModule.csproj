@@ -10,6 +10,7 @@
     <ItemGroup>
         <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
         <PackageReference Include="Bogus" Version="35.5.1"/>
+        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
     </ItemGroup>
 
 </Project>
