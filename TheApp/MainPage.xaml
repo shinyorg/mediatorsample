@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TheApp"
+             x:DataType="local:MainViewModel"
+             x:Class="TheApp.MainPage"
+             Title="The Mediator">
+    <VerticalStackLayout>
+        <Button Text="Generate Data" Command="{Binding GenerateData}" />
+        <Button Text="Nav To People" Command="{Binding NavToPeopleList}" />
+        <Button Text="Nav To Vehicles" Command="{Binding NavToVehicleList}" />
+    </VerticalStackLayout>
+</ContentPage>

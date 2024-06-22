@@ -1,0 +1,6 @@
+<Project>
+    <ItemGroup>
+        <PackageReference Include="Shiny.Mediator.Contracts" Version="$(MediatorVersion)" />
+        <PackageReference Include="Prism.Maui" Version="9.0.401-pre" />
+    </ItemGroup>
+</Project>

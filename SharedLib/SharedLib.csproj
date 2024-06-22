@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>$(PlatformTargetFrameworks)</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.9.172"/>
+        <PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.11"/>
+        <PackageReference Include="CommunityToolkit.Maui" Version="9.0.0"/>
+        <PackageReference Include="Prism.DryIoc.Maui" Version="9.0.401-pre"/>
+        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
+
+        <PackageReference Include="Shiny.Framework" Version="4.1.0" />
+        <PackageReference Include="Shiny.Mediator" Version="1.2.0" />
+        <PackageReference Include="Shiny.Mediator.Maui" Version="1.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\VehicleModule.Contracts\VehicleModule.Contracts.csproj" />
+        <ProjectReference Include="..\PeopleModule.Contracts\PeopleModule.Contracts.csproj" />
+    </ItemGroup>
+</Project>

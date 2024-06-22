@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vehicleModule="clr-namespace:VehicleModule"
+             xmlns:contracts="clr-namespace:VehicleModule.Contracts;assembly=VehicleModule.Contracts"
+             x:DataType="vehicleModule:ListViewModel"
+             x:Class="VehicleModule.ListPage"
+             Title="Vehicles">
+    <ContentPage.Content>
+        <RefreshView Command="{Binding Load}"
+                     IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding List}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedVehicle}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="contracts:VehicleResult">
+                        <Border Stroke="White" 
+                                StrokeThickness="1">
+                            <Image.Shadow>
+                                <Shadow Brush="Gray"
+                                        Offset="20,20"
+                                        Radius="40"
+                                        Opacity="0.8" />
+                            </Image.Shadow>
+                            
+                            <Label Text="{Binding Name}" 
+                                   FontSize="Large" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,10 @@
+<Project>
+    <PropertyGroup>
+        <PlatformTargetFrameworks>$(TargetFrameworks);net8.0-ios</PlatformTargetFrameworks>
+        <PlatformTargetFrameworks>$(TargetFrameworks);net8.0-android</PlatformTargetFrameworks>
+        <PlatformTargetFrameworks>$(TargetFrameworks);net8.0-maccatalyst</PlatformTargetFrameworks>
+        <MauiVersion>8.0.60</MauiVersion>
+        <ShinyVersion>3.3.3</ShinyVersion>
+        <MediatorVersion>1.2.0</MediatorVersion>
+    </PropertyGroup>
+</Project>
