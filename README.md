@@ -2,17 +2,10 @@
 
 This shows a lot of good practices when it comes to constructing .NET MAUI applications.  
 
-## TODO
-* Links - Add Mediator
-* Documentation on layouts
-  * Contracts are the cross communicators
-  * Events are post reactions
-  * Request handlers are logic processors
-  * Shared loops everything into the Module/Feature libraries and ultimately up to the app
-* Cache
-* Flush Caches on delete
-* Finish Owner Form
-* If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
+## Shiny Mediator
+* [GitHub](https://github.com/shinyorg/mediator)
+* [Documentation](https://shinylib.net/client/mediator/)
+* <a href="https://www.nuget.org/packages/Shiny.Mediator" target="_NEWWINDOW"><img src="https://buildstats.info/nuget/Shiny.Mediator"></a>
 
 ## Other Libraries
 | Name                                                                    | Description                                                             |
@@ -58,3 +51,13 @@ at the service layer?  That's up to you to decide!
 
 Likely not because an app is generally single process.  This shows a common pattern (and often common pitfall in server side microserving).  Pick your fights &
 don't overengineer.  Well this does 
+
+## TODO
+* Documentation on layouts
+  * Contracts are the cross communicators
+  * Events are post reactions
+  * Request handlers are logic processors
+  * Shared loops everything into the Module/Feature libraries and ultimately up to the app
+* Cache
+* Flush Caches on delete
+* If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
