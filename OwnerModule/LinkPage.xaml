@@ -2,12 +2,35 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ownerModule="clr-namespace:OwnerModule"
-             xmlns:settings="clr-namespace:AiForms.Settings;assembly=SettingsView"
+             xmlns:sv="clr-namespace:AiForms.Settings;assembly=SettingsView"
              x:DataType="ownerModule:LinkViewModel"
              x:Class="OwnerModule.LinkPage"
              Title="Link">
     <ContentPage.Content>
-        <settings:SettingsView>
-        </settings:SettingsView>
+        <sv:SettingsView>
+            <sv:Section Title="Values">
+                <sv:PickerCell Title="Person" 
+                               SelectionMode="Single"
+                               ItemsSource="{Binding People}"
+                               SelectedItem="{Binding SelectedPerson}"
+                               IsEnabled="{Binding IsPersonEnabled}"
+                               UsePickToClose="True"
+                               DisplayMember="FullName" />
+                
+                <sv:PickerCell Title="Vehicle" 
+                               SelectionMode="Single"
+                               ItemsSource="{Binding Vehicles}"
+                               SelectedItem="{Binding SelectedVehicle}"
+                               IsEnabled="{Binding IsVehicleEnabled}"
+                               UsePickToClose="True"
+                               DisplayMember="Name" />
+            </sv:Section>
+            
+            <sv:Section>
+                <sv:ButtonCell Title="{Binding AddText}"
+                               TitleAlignment="Center"
+                               Command="{Binding Add}" />
+            </sv:Section>
+        </sv:SettingsView>
     </ContentPage.Content>
 </ContentPage>

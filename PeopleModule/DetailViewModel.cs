@@ -48,7 +48,7 @@ public class DetailViewModel(BaseServices services, IDataService data, IMediator
                     {
                         await mediator.Send(new LinkRequest(this.person.Id, vehicle.Id, false));
                         this.Load.Execute(null);
-                        await this.Dialogs.Confirm($"Removed '{vehicle.FullName}' Successfully");
+                        await this.Dialogs.Snackbar($"Removed '{vehicle.FullName}' Successfully");
                     }
                 })
             ))

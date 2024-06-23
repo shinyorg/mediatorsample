@@ -30,19 +30,27 @@
                             <Grid RowDefinitions="*, Auto"
                                   ColumnDefinitions="*, Auto">
                                 
-                                <Label Text="{Binding VehicleName}">
+                                <Label Text="{Binding VehicleName}"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="Large"
+                                       Grid.Row="0"
+                                       Grid.Column="0">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ViewVehicle}" />
                                     </Label.GestureRecognizers>
                                 </Label>
                                 <Button Text="-" 
                                         FontSize="Large" 
-                                        Command="{Binding RemoveOwner}"/>
+                                        Command="{Binding RemoveOwner}"
+                                        Grid.Row="0"
+                                        Grid.Column="1" />
                                 
                                 <BoxView Height="1" 
                                          HorizontalOptions="Fill"
                                          VerticalOptions="Center" 
-                                         BackgroundColor="Black"/>
+                                         BackgroundColor="Black"
+                                         Grid.Row="1"
+                                         Grid.ColumnSpan="2" />
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

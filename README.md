@@ -3,6 +3,12 @@
 This shows a lot of good practices when it comes to constructing .NET MAUI applications.  
 
 ## TODO
+* Links - Add Mediator
+* Documentation on layouts
+  * Contracts are the cross communicators
+  * Events are post reactions
+  * Request handlers are logic processors
+  * Shared loops everything into the Module/Feature libraries and ultimately up to the app
 * Cache
 * Flush Caches on delete
 * Finish Owner Form
