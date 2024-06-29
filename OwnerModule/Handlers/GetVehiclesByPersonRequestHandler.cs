@@ -6,7 +6,7 @@ namespace OwnerModule.Handlers;
 [RegisterHandler]
 public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, IReadOnlyList<GetVehiclesByPersonResult>>
 {
-    // TODO: we can cache this for efficiency
+    [Cache(AbsoluteExpirationSeconds = 60)]
     public async Task<IReadOnlyList<GetVehiclesByPersonResult>> Handle(GetVehiclesByPersonRequest request, CancellationToken cancellationToken)
     {
         var vehicleIds = await data.GetVehicleIdsByPersonId(request.PersonId, cancellationToken);

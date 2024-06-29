@@ -1,8 +1,10 @@
+using Shiny.Mediator.Middleware;
+
 namespace OwnerModule.Handlers;
 
 
 [RegisterHandler]
-public class LinkRequestHandler(IDataService data) : IRequestHandler<LinkRequest>
+public class LinkRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<LinkRequest>
 {
     public async Task Handle(LinkRequest request, CancellationToken cancellationToken)
     {
@@ -14,5 +16,8 @@ public class LinkRequestHandler(IDataService data) : IRequestHandler<LinkRequest
         {
             await data.Remove(request.VehicleId, request.PersonId, cancellationToken);
         }
+
+        // we'll tell cache to flush here 
+        await mediator.FlushAllStores(cancellationToken);
     }
 }

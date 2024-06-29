@@ -31,7 +31,10 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
         
-        builder.Services.AddShinyMediator(x => x.UseMaui());
+        builder.Services.AddShinyMediator(x => x
+            .AddMemoryCaching()
+            .UseMaui()
+        );
         builder.AddPeopleModule();
         builder.AddVehicleModule();
         builder.AddOwnerModule();

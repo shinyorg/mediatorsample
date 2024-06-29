@@ -15,8 +15,9 @@
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
 
         <PackageReference Include="Shiny.Framework" Version="4.1.0" />
-        <PackageReference Include="Shiny.Mediator" Version="1.2.0" />
-        <PackageReference Include="Shiny.Mediator.Maui" Version="1.2.0" />
+        <PackageReference Include="Shiny.Mediator" Version="$(MediatorVersion)" />
+        <PackageReference Include="Shiny.Mediator.Maui" Version="$(MediatorVersion)" />
+        <PackageReference Include="Shiny.Mediator.Caching" Version="$(MediatorVersion)" />
     </ItemGroup>
 
     <ItemGroup>
