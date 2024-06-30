@@ -11,18 +11,18 @@ public class ListViewModel : ViewModel
             this.List = await mediator.Request(new GetListRequest())
         );
         this.BindBusyCommand(this.Load);
-        
+
         this.WhenAnyValueSelected(
             x => x.SelectedPerson,
-            async x => await mediator.Send(new DetailNavRequest(this.Navigation, x.Id))
-        );        
+            async x => await mediator.Send(new DetailNavRequest(x.Id) { Navigator = this.Navigation })
+        );
     }
-    
+
     public ICommand Load { get; }
     [Reactive] public IReadOnlyList<PersonResult> List { get; private set; }
     [Reactive] public PersonResult? SelectedPerson { get; set; }
 
-    
+
     public override void OnAppearing()
     {
         base.OnAppearing();

@@ -1,3 +1,9 @@
 namespace VehicleModule.Contracts;
 
-public record ListNavRequest(INavigationService Navigator) : IRequest;
+
+public record ListNavRequest : IPrismNavigationRequest
+{
+    public string PageUri => Routes.List;
+    public string? NavigationParameterName => null;
+    public INavigationService? Navigator { get; set; }
+}

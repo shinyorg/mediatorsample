@@ -7,14 +7,14 @@ public class MainViewModel(BaseServices services, IMediator mediator) : ViewMode
 {
     ICommand? navPeople;
     public ICommand NavToPeopleList => this.navPeople ??= ReactiveCommand.CreateFromTask(
-        () => mediator.Send(new PeopleModule.Contracts.ListNavRequest(this.Navigation))
+        () => mediator.Send(new PeopleModule.Contracts.ListNavRequest { Navigator = this.Navigation })
     );
 
     ICommand? navVehicle;
     public ICommand NavToVehicleList => this.navVehicle ??= ReactiveCommand.CreateFromTask(
-        () => mediator.Send(new VehicleModule.Contracts.ListNavRequest(this.Navigation))
+        () => mediator.Send(new VehicleModule.Contracts.ListNavRequest { Navigator = this.Navigation })
     );
-    
+
     ICommand? genData;
     public ICommand GenerateData => this.genData ??= ReactiveCommand.CreateFromTask(async () =>
     {

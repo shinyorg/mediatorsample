@@ -17,7 +17,7 @@ public class LinkRequestHandler(IDataService data, IMediator mediator) : IReques
             await data.Remove(request.VehicleId, request.PersonId, cancellationToken);
         }
 
-        // we'll tell cache to flush here 
+        // we'll tell cache to flush here
         await mediator.FlushAllStores(cancellationToken);
     }
 }

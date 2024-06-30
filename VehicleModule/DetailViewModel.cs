@@ -5,7 +5,7 @@ namespace VehicleModule;
 
 
 public class DetailViewModel(
-    BaseServices services, 
+    BaseServices services,
     IDataService data,
     IMediator mediator
 ) : ViewModel(services)
@@ -26,13 +26,13 @@ public class DetailViewModel(
             this.Load.Execute(null);
         }
     }
-    
-    
+
+
     ICommand? load;
     public ICommand Load => this.load ??= ReactiveCommand.CreateFromTask(async () =>
     {
         var owners = await mediator.Request(
-            new GetPeopleByVehicleRequest(this.vehicle!.Id), 
+            new GetPeopleByVehicleRequest(this.vehicle!.Id),
             this.DeactivateToken
         );
 
@@ -40,7 +40,7 @@ public class DetailViewModel(
             .Select(person => new ItemViewModel(
                 person,
                 ReactiveCommand.CreateFromTask(() =>
-                    mediator.Send(new PeopleModule.Contracts.DetailNavRequest(this.Navigation, person.Id))
+                    mediator.Send(new PeopleModule.Contracts.DetailNavRequest(person.Id) { Navigator = this.Navigation })
                 ),
                 ReactiveCommand.CreateFromTask(async () =>
                 {
@@ -55,11 +55,11 @@ public class DetailViewModel(
             ))
             .ToList();
     });
-    
-    
+
+
     ICommand? add;
     public ICommand AddOwner => this.add ??= ReactiveCommand.CreateFromTask(() =>
-        mediator.Send(new LinkNavRequest(this.Navigation, null, this.vehicle!.Id))
+        mediator.Send(new LinkNavRequest(null, this.vehicle!.Id) { Navigator = this.Navigation })
     );
 
 

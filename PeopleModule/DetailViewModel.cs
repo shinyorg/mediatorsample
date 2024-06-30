@@ -7,8 +7,8 @@ namespace PeopleModule;
 public class DetailViewModel(BaseServices services, IDataService data, IMediator mediator) : ViewModel(services)
 {
     PersonResult? person;
-    
-    
+
+
     public override async void OnNavigatedTo(INavigationParameters parameters)
     {
         base.OnNavigatedTo(parameters);
@@ -22,13 +22,13 @@ public class DetailViewModel(BaseServices services, IDataService data, IMediator
             this.Load.Execute(null);
         }
     }
-    
+
 
     ICommand? add;
     public ICommand AddVehicle => this.add ??= ReactiveCommand.CreateFromTask(() =>
-        mediator.Send(new LinkNavRequest(this.Navigation, this.person!.Id, null))
+        mediator.Send(new LinkNavRequest(this.person!.Id, null) { Navigator = this.Navigation })
     );
-    
+
 
     ICommand? load;
     public ICommand Load => this.load ??= ReactiveCommand.CreateFromTask(async () =>
@@ -39,7 +39,7 @@ public class DetailViewModel(BaseServices services, IDataService data, IMediator
             .Select(vehicle => new ItemViewModel(
                 vehicle,
                 ReactiveCommand.CreateFromTask(() =>
-                    mediator.Send(new VehicleModule.Contracts.DetailNavRequest(this.Navigation, vehicle.Id))
+                    mediator.Send(new VehicleModule.Contracts.DetailNavRequest(vehicle.Id) { Navigator = this.Navigation })
                 ),
                 ReactiveCommand.CreateFromTask(async () =>
                 {
