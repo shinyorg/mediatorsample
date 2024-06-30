@@ -22,6 +22,7 @@ This shows a lot of good practices when it comes to constructing .NET MAUI appli
 
 1. Allows cross functional teams to work enable cross functional requirements without being tightly coupled
 2. Allows each feature/module to register its own services, controls, pages, viewmodels, etc in isolation while still having access to shared functionality like logging, configuration, etc
+3. Through use of Shiny.Mediator.Prism, we can achieve strongly typed routing and navigation parameters via a simple Mediator request that implements the IPrismNavigationRequest
 
 ## FAQ
 
@@ -58,6 +59,4 @@ don't overengineer.  Well this does
   * Events are post reactions
   * Request handlers are logic processors
   * Shared loops everything into the Module/Feature libraries and ultimately up to the app
-* Cache
-* Flush Caches on delete
 * If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
