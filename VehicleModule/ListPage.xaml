@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vehicleModule="clr-namespace:VehicleModule"
              xmlns:contracts="clr-namespace:VehicleModule.Contracts;assembly=VehicleModule.Contracts"
+             xmlns:skeleton="clr-namespace:Maui.Skeleton;assembly=Maui.Skeleton"
              NavigationPage.BackButtonTitle="Back"
              x:DataType="vehicleModule:ListViewModel"
              x:Class="VehicleModule.ListPage"
@@ -12,7 +13,10 @@
                      IsRefreshing="{Binding IsBusy}">
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"
-                            SelectedItem="{Binding SelectedVehicle}">
+                            SelectedItem="{Binding SelectedVehicle}"
+                            skeleton:Skeleton.IsParent="True"
+                            skeleton:Skeleton.IsBusy="{Binding IsBusy}"
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}">
                 <CollectionView.EmptyView>
                     <Label Text="No Vehicles Found"
                            FontSize="Large" 

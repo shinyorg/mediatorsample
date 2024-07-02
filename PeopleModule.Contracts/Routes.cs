@@ -2,6 +2,6 @@ namespace PeopleModule;
 
 public static class Routes
 {
-    public static string List = "People";
-    public static string Detail = "Person";
+    public const string List = "People";
+    public const string Detail = "Person";
 }

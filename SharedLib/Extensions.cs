@@ -2,9 +2,12 @@ namespace SharedLib;
 
 public static class Extensions
 {
-    public static T? Get<T>(this INavigationParameters parameters)
-        => parameters.GetValue<T>(typeof(T).Name);
-
-    public static (string, TRequest) ToNavParam<TRequest>(this TRequest request) where TRequest : IRequest
-        => (request.GetType().Name, request);
+    public static T GetRequired<T>(this INavigationParameters parameters)
+    {
+        var key = typeof(T).Name;
+        if (!parameters.ContainsKey(key))
+            throw new InvalidOperationException($"NavParameter '{key}' was not found");
+        
+        return parameters.GetValue<T>(key);
+    }
 }

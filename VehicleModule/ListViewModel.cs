@@ -6,8 +6,9 @@ public class ListViewModel : ViewModel
     public ListViewModel(BaseServices services, IMediator mediator) : base(services)
     {
         this.Load = ReactiveCommand.CreateFromTask(async () =>
-            this.List = await mediator.Request(new GetListRequest())
-        );
+        {
+            this.List = await mediator.Request(new GetListRequest());
+        });
         this.BindBusyCommand(this.Load);
 
         this.WhenAnyValueSelected(

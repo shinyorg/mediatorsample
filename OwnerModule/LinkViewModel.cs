@@ -38,7 +38,7 @@ public class LinkViewModel(BaseServices services, IMediator mediator) : ViewMode
         base.OnNavigatedTo(parameters);
         if (parameters.IsNewNavigation())
         {
-            var request = parameters.Get<LinkNavRequest>();
+            var request = parameters.GetRequired<LinkNavRequest>();
             await Task.WhenAll(this.BindPeople(), this.BindVehicles());
             
             if (request.PersonId == null)

@@ -15,7 +15,7 @@ public class DetailViewModel(BaseServices services, IDataService data, IMediator
 
         if (parameters.IsNewNavigation())
         {
-            var request = parameters.Get<DetailNavRequest>()!;
+            var request = parameters.GetRequired<DetailNavRequest>();
             this.person = await data.GetById(request.PersonId, CancellationToken.None);
             this.Title = this.person!.FullName;
 

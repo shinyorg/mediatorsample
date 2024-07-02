@@ -2,6 +2,6 @@ namespace VehicleModule;
 
 public static class Routes
 {
-    public static string List = "Animals";
-    public static string Detail = "Animal";
+    public const string List = "Animals";
+    public const string Detail = "Animal";
 }

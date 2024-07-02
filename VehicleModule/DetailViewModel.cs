@@ -15,10 +15,11 @@ public class DetailViewModel(
     public override async void OnNavigatedTo(INavigationParameters parameters)
     {
         base.OnNavigatedTo(parameters);
-        var request = parameters.Get<DetailNavRequest>()!;
 
         if (parameters.IsNewNavigation())
         {
+            var request = parameters.GetRequired<DetailNavRequest>();
+            
             // go idea to safety this
             this.vehicle = await data.GetById(request.VehicleId, CancellationToken.None);
             this.Title = this.vehicle!.Name;

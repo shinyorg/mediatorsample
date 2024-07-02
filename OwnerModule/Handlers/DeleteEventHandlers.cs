@@ -12,7 +12,7 @@ public class DeleteEventHandlers(IMediator mediator, IDataService data) : IEvent
     {
         await data.DeleteByVehicle(@event.VehicleId, cancellationToken);
         
-        // this tells bulti-in mediator components to bust their cache values
+        // this tells built-in mediator components to bust their cache values
         await mediator.FlushAllStores(cancellationToken); 
     }
 

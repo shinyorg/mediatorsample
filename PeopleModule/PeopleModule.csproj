@@ -9,6 +9,7 @@
     <ItemGroup>
         <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
         <PackageReference Include="Bogus" Version="35.5.1"/>
+        <PackageReference Include="HorusStudio.Maui.Skeleton" Version="2.0.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
     </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:peopleModule="clr-namespace:PeopleModule"
              xmlns:contracts="clr-namespace:PeopleModule.Contracts;assembly=PeopleModule.Contracts"
+             xmlns:skeleton="clr-namespace:Maui.Skeleton;assembly=Maui.Skeleton"
              NavigationPage.BackButtonTitle="Back"
              x:DataType="peopleModule:ListViewModel"
              x:Class="PeopleModule.ListPage"
@@ -12,7 +13,10 @@
                      IsRefreshing="{Binding IsBusy}">
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"
-                            SelectedItem="{Binding SelectedPerson}">
+                            SelectedItem="{Binding SelectedPerson}"
+                            skeleton:Skeleton.IsParent="True"
+                            skeleton:Skeleton.IsBusy="{Binding IsBusy}"
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}">
                 <CollectionView.EmptyView>
                     <Label Text="No People Found"
                            FontSize="Large" 
