@@ -1,8 +1,11 @@
-﻿using OwnerModule;
+﻿using Microsoft.Extensions.Configuration;
+using OwnerModule;
 using VehicleModule;
 using PeopleModule;
+using SharedLib;
 
 namespace TheApp;
+
 
 public static class MauiProgram
 {
@@ -12,17 +15,11 @@ public static class MauiProgram
             .CreateBuilder()
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-            .UseShinyFramework(
+            .UsePrism(
                 new DryIocContainerExtension(),
-                prism => prism.CreateWindow("NavigationPage/MainPage"),
-                new(
-#if DEBUG
-                    ErrorAlertType.FullError
-#else
-                    ErrorAlertType.NoLocalize
-#endif
-                )
+                prism => prism.CreateWindow("NavigationPage/MainPage")
             );
+            // .UseShiny();
 
         builder.Configuration.AddJsonPlatformBundle();
 #if DEBUG
@@ -38,9 +35,10 @@ public static class MauiProgram
         builder.AddPeopleModule();
         builder.AddVehicleModule();
         builder.AddOwnerModule();
-
-        builder.Services.AddDataAnnotationValidation();
+        builder.Services.AddScoped<BaseServices>();
+        
         builder.Services.RegisterForNavigation<MainPage, MainViewModel>();
+        
         var app = builder.Build();
 
         return app;

@@ -1,31 +1,33 @@
-using ReactiveUI;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using SharedLib;
 
 namespace PeopleModule;
 
 
-public class ListViewModel : ViewModel
+public partial class ListViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
 {
-    public ListViewModel(BaseServices services, IMediator mediator) : base(services)
-    {
-        this.Load = ReactiveCommand.CreateFromTask(async () =>
-            this.List = await mediator.Request(new GetListRequest())
-        );
-        this.BindBusyCommand(this.Load);
 
-        this.WhenAnyValueSelected(
-            x => x.SelectedPerson,
-            async x => await mediator.Send(new DetailNavRequest(x.Id) { Navigator = this.Navigation })
-        );
+//     this.WhenAnyValueSelected(
+//         x => x.SelectedPerson,
+//         async x => await mediator.Send(new DetailNavRequest(x.Id) { Navigator = this.Navigation })
+//     );
+
+    [RelayCommand]
+    async Task Load()
+    {
+        this.IsBusy = true;
+        this.List = await mediator.Request(new GetListRequest(), this.DeactiveToken);
+        this.IsBusy = false;
     }
 
-    public ICommand Load { get; }
-    [Reactive] public IReadOnlyList<PersonResult> List { get; private set; }
-    [Reactive] public PersonResult? SelectedPerson { get; set; }
+    [ObservableProperty] IReadOnlyList<PersonResult> list;
+    [ObservableProperty] PersonResult? selectedPerson;
 
 
     public override void OnAppearing()
     {
         base.OnAppearing();
-        this.Load.Execute(null);
+        this.LoadCommand.Execute(null);
     }
 }

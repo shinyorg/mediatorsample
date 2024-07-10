@@ -9,7 +9,7 @@
              x:Class="PeopleModule.ListPage"
              Title="People">
     <ContentPage.Content>
-        <RefreshView Command="{Binding Load}"
+        <RefreshView Command="{Binding LoadCommand}"
                      IsRefreshing="{Binding IsBusy}">
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"

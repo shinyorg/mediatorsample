@@ -1,42 +1,41 @@
-using ReactiveUI;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SharedLib;
 using VehicleModule.Contracts;
 using PeopleModule.Contracts;
+using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace OwnerModule;
 
 
-public class LinkViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
+public partial class LinkViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
 {
-    ICommand? add;
-    public ICommand Add => this.add ??= ReactiveCommand.CreateFromTask(
-        async () =>
-        {
-            await mediator.Send(new LinkRequest(this.SelectedPerson!.Id, this.SelectedVehicle!.Id, true));
-            await this.Navigation.GoBack();
-            await this.Dialogs.Snackbar("Owner Added");
-        },
-        this.WhenAny(
-            x => x.SelectedPerson,
-            x => x.SelectedVehicle,
-            (p, v) => p.GetValue() != null && v.GetValue() != null
-        )
-    );
+    [RelayCommand]
+    async Task Add()
+    {
+        await mediator.Send(new LinkRequest(this.SelectedPerson!.Id, this.SelectedVehicle!.Id, true));
+        await this.Navigation.GoBackAsync();
+        await this.Dialogs.DisplayAlertAsync("Owner Added", "Done", "Ok");
+        // this.WhenAny(
+        //     x => x.SelectedPerson,
+        //     x => x.SelectedVehicle,
+        //     (p, v) => p.GetValue() != null && v.GetValue() != null
+        // )
+    }
 
-    [Reactive] public IReadOnlyList<PersonResult> People { get; private set; } = null!;
-    [Reactive] public IReadOnlyList<VehicleResult> Vehicles { get; private set; } = null!;
-    [Reactive] public VehicleResult? SelectedVehicle { get; set; }
-    [Reactive] public PersonResult? SelectedPerson { get; set; }
-
-    [Reactive] public string AddText { get; private set; } = null!;
-    [Reactive] public bool IsVehicleEnabled { get; private set; }
-    [Reactive] public bool IsPersonEnabled { get; private set; }
+    [ObservableProperty] IReadOnlyList<PersonResult> people;
+    [ObservableProperty] IReadOnlyList<VehicleResult> vehicles;
+    [ObservableProperty] VehicleResult? selectedVehicle;
+    [ObservableProperty] PersonResult? selectedPerson;
+    [ObservableProperty] string addText;
+    [ObservableProperty] bool isVehicleEnabled;
+    [ObservableProperty] bool isPersonEnabled;
     
     
     public override async void OnNavigatedTo(INavigationParameters parameters)
     {
         base.OnNavigatedTo(parameters);
-        if (parameters.IsNewNavigation())
+        if (parameters.GetNavigationMode() == NavigationMode.New)
         {
             var request = parameters.GetRequired<LinkNavRequest>();
             await Task.WhenAll(this.BindPeople(), this.BindVehicles());

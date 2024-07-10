@@ -1,10 +1,12 @@
+using CommunityToolkit.Mvvm.Input;
 using OwnerModule.Contracts;
 using SharedLib;
+using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace VehicleModule;
 
 
-public class DetailViewModel(
+public partial class DetailViewModel(
     BaseServices services,
     IDataService data,
     IMediator mediator
@@ -16,7 +18,7 @@ public class DetailViewModel(
     {
         base.OnNavigatedTo(parameters);
 
-        if (parameters.IsNewNavigation())
+        if (parameters.GetNavigationMode() == NavigationMode.New)
         {
             var request = parameters.GetRequired<DetailNavRequest>();
             
@@ -34,7 +36,7 @@ public class DetailViewModel(
     {
         var owners = await mediator.Request(
             new GetPeopleByVehicleRequest(this.vehicle!.Id),
-            this.DeactivateToken
+            this.DeactiveToken
         );
 
         this.Owners = owners
@@ -45,12 +47,17 @@ public class DetailViewModel(
                 ),
                 ReactiveCommand.CreateFromTask(async () =>
                 {
-                    var confirm = await this.Dialogs.Confirm($"Are you sure you wish to delete '{this.vehicle!.Name}'?", "Confirm", "Yes", "No");
+                    var confirm = await this.Dialogs.DisplayAlertAsync(
+                        $"Are you sure you wish to delete '{this.vehicle!.Name}'?", 
+                        "Confirm", 
+                        "Yes", 
+                        "No"
+                    );
                     if (confirm)
                     {
-                        await mediator.Send(new DeleteVehicleRequest(this.vehicle.Id), this.DeactivateToken);
-                        await this.Navigation.GoBack();
-                        await this.Dialogs.Snackbar($"'{this.vehicle.Name}' Successfully Deleted");
+                        await mediator.Send(new DeleteVehicleRequest(this.vehicle.Id), this.DeactiveToken);
+                        await this.Navigation.GoBackAsync();
+                        await this.Dialogs.DisplayAlertAsync($"'{this.vehicle.Name}' Successfully Deleted", "Done", "Ok");
                     }
                 })
             ))
@@ -58,23 +65,26 @@ public class DetailViewModel(
     });
 
 
-    ICommand? add;
-    public ICommand AddOwner => this.add ??= ReactiveCommand.CreateFromTask(() =>
-        mediator.Send(new LinkNavRequest(null, this.vehicle!.Id) { Navigator = this.Navigation })
-    );
+    [RelayCommand]
+    Task AddOwner() => mediator.Send(new LinkNavRequest(null, this.vehicle!.Id) { Navigator = this.Navigation });
 
 
-    ICommand? delete;
-    public ICommand Delete => this.delete ??= ReactiveCommand.CreateFromTask(async () =>
+    [RelayCommand]
+    async Task Delete()
     {
-        var confirm = await this.Dialogs.Confirm($"Are you sure you wish to delete '{this.vehicle!.Name}'?", "Confirm", "Yes", "No");
+        var confirm = await this.Dialogs.DisplayAlertAsync(
+            $"Are you sure you wish to delete '{this.vehicle!.Name}'?", 
+            "Confirm", 
+            "Yes", 
+            "No"
+        );
         if (confirm)
         {
             await mediator.Send(new DeleteVehicleRequest(this.vehicle!.Id), CancellationToken.None);
-            await this.Navigation.GoBack();
-            await this.Dialogs.Snackbar($"{this.vehicle.Name} deleted successfully!");
+            await this.Navigation.GoBackAsync();
+            await this.Dialogs.DisplayAlertAsync($"{this.vehicle.Name} deleted successfully!", "Done", "Ok");
         }
-    });
+    }
 
     [Reactive] public IReadOnlyList<ItemViewModel> Owners { get; private set; } = null!;
 }

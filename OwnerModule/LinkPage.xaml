@@ -29,7 +29,7 @@
             <sv:Section>
                 <sv:ButtonCell Title="{Binding AddText}"
                                TitleAlignment="Center"
-                               Command="{Binding Add}" />
+                               Command="{Binding AddCommand}" />
             </sv:Section>
         </sv:SettingsView>
     </ContentPage.Content>

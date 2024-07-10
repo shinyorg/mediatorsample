@@ -7,8 +7,8 @@
              NavigationPage.BackButtonTitle="Back"
              Title="The Mediator">
     <VerticalStackLayout>
-        <Button Text="Generate Data" Command="{Binding GenerateData}" />
-        <Button Text="Nav To People" Command="{Binding NavToPeopleList}" />
-        <Button Text="Nav To Vehicles" Command="{Binding NavToVehicleList}" />
+        <Button Text="Generate Data" Command="{Binding GenerateDataCommand}" />
+        <Button Text="Nav To People" Command="{Binding NavToPeopleListCommand}" />
+        <Button Text="Nav To Vehicles" Command="{Binding NavToVehicleListCommand}" />
     </VerticalStackLayout>
 </ContentPage>

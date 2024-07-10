@@ -9,7 +9,7 @@
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Owner" 
-                     Command="{Binding AddOwner}" />
+                     Command="{Binding AddOwnerCommand}" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -59,7 +59,7 @@
             </ScrollView>
             
             <Button Text="Delete Vehicle" 
-                    Command="{Binding Delete}" 
+                    Command="{Binding DeleteCommand}" 
                     BackgroundColor="Red"
                     TextColor="White" 
                     Grid.Row="1" />

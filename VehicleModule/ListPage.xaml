@@ -9,7 +9,7 @@
              x:Class="VehicleModule.ListPage"
              Title="Vehicles">
     <ContentPage.Content>
-        <RefreshView Command="{Binding Load}"
+        <RefreshView Command="{Binding LoadCommand}"
                      IsRefreshing="{Binding IsBusy}">
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"
