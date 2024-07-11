@@ -10,7 +10,7 @@
              Title="Vehicles">
     <ContentPage.Content>
         <RefreshView Command="{Binding LoadCommand}"
-                     IsRefreshing="{Binding IsBusy}">
+                     IsRefreshing="{Binding LoadCommand.IsRunning}">
             <CollectionView ItemsSource="{Binding List}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedVehicle}"

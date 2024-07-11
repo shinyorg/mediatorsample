@@ -36,8 +36,6 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
         base.OnAppearing();
         this.WhenAnyProperty()
             .Subscribe(_ => this.AddCommand.NotifyCanExecuteChanged());
-        // .DisposedBy();
-
     }
 
     public override async void OnNavigatedTo(INavigationParameters parameters)

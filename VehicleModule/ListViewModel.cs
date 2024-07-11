@@ -9,7 +9,7 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
 {
 // this.WhenAnyValueSelected(
 //     x => x.SelectedVehicle,
-//     async x => await mediator.Send(new DetailNavRequest(x.Id) { Navigator = this.Navigation })
+//     async x => 
 // );
 
     [RelayCommand]
@@ -27,4 +27,13 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
 
     [ObservableProperty] IReadOnlyList<VehicleResult> list;
     [ObservableProperty] VehicleResult? selectedVehicle;
+
+    async partial void OnSelectedVehicleChanged(VehicleResult? value)
+    {
+        if (value != null)
+        {
+            await mediator.Send(new DetailNavRequest(value.Id) { Navigator = this.Navigation });
+            this.SelectedVehicle = null;
+        }
+    }
 }

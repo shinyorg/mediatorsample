@@ -14,7 +14,7 @@ This shows a lot of good practices when it comes to constructing .NET MAUI appli
 | [Reactive](https://reactiveui.net)                                      | Reactive Extensions for Apps                                            |
 | [Shiny Configuration](https://shinylib.net/client/other/configuration/) | Mobile specific use-case library for Microsoft.Extensions.Configuration |
 | [SQLite](https://todo)                                                  | The original SQLite object relational mapper                            |
-| [Shiny Framework](https://github.com/shinyorg/framework)                | Brings RXUI, Prism, & Shiny together with some extra toys               |
+| [Community Toolkit MVVM](https://github.com/shinyorg/framework)         | modern, fast, and modular MVVM library|
 | [Settings View](https://todo)                                           | A beautiful looking table type control for forms                        |
 | [.NET MAUI Community Toolkit](https://todo)                             | The premier toolkit for .NET MAUI                                       |
 
