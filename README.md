@@ -84,9 +84,4 @@ Likely not because an app is generally single process.  This shows a common patt
 don't overengineer.  Well this does 
 
 ## TODO
-* Documentation on layouts
-  * Contracts are the cross communicators
-  * Events are post reactions
-  * Request handlers are logic processors
-  * Shared loops everything into the Module/Feature libraries and ultimately up to the app
 * If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
