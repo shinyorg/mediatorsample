@@ -43,6 +43,17 @@ graph LR
     PeopleModule --> TheApp
 ```
 
+| Project                 | Description                                                                       |
+|-------------------------|-----------------------------------------------------------------------------------|
+| TheApp                  | This is the main MAUI executable project                                          |
+| Shared                  | This is where any shared services, utils, etc go to share amongst ALL modules     |
+| PeopleModule            | Where all the handlers, views, viewmodels, and services specific to people live   |
+| PeopleModule.Contracts  | Contracts that the PeopleModule owns and manages                                  |
+| VehicleModule           | Where all the handlers, views, viewmodels, and services specific to vehicles live |
+| VehicleModule.Contracts | Contracts that the VehicleModule owns and manages                                 |
+| OwnerModule             | Where all the handlers, views, viewmodels, and services specific to owners live   |
+| OwnerModule.Contracts   | Contracts that the OwnerModule owns and manages                                   |
+
 ## FAQ
 
 > Does it offer any advantages for smaller apps? 
