@@ -24,6 +24,25 @@ This shows a lot of good practices when it comes to constructing .NET MAUI appli
 2. Allows each feature/module to register its own services, controls, pages, viewmodels, etc in isolation while still having access to shared functionality like logging, configuration, etc
 3. Through use of Shiny.Mediator.Prism, we can achieve strongly typed routing and navigation parameters via a simple Mediator request that implements the IPrismNavigationRequest
 
+## Dependency Graph
+
+```mermaid
+graph LR
+    TheApp <--- Shared
+    Shared --> PeopleModule
+    Shared --> VehicleModule
+    Shared --> OwnerModule
+    OwnerModule.Contracts --> OwnerModule
+    VehicleModule.Contracts --> VehicleModule
+    PeopleModule.Contracts --> PeopleModule
+    OwnerModule.Contracts --> Shared
+    VehicleModule.Contracts --> Shared
+    PeopleModule.Contracts --> Shared
+    OwnerModule --> TheApp
+    VehicleModule --> TheApp
+    PeopleModule --> TheApp
+```
+
 ## FAQ
 
 > Does it offer any advantages for smaller apps? 
