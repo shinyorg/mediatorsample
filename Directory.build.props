@@ -5,6 +5,6 @@
         <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-maccatalyst</PlatformTargetFrameworks>-->
         <MauiVersion>8.0.60</MauiVersion>
         <ShinyVersion>3.3.3</ShinyVersion>
-        <MediatorVersion>1.4.2</MediatorVersion>
+        <MediatorVersion>1.6.0</MediatorVersion>
     </PropertyGroup>
 </Project>

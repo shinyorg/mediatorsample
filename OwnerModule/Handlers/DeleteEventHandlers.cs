@@ -5,7 +5,7 @@ using VehicleModule.Contracts;
 namespace OwnerModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class DeleteEventHandlers(IMediator mediator, IDataService data) : IEventHandler<DeleteVehicleEvent>, IEventHandler<DeletePersonEvent>
 {
     public async Task Handle(DeleteVehicleEvent @event, CancellationToken cancellationToken)

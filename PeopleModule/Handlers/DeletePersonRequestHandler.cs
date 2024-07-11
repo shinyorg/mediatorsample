@@ -1,7 +1,7 @@
 namespace PeopleModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class DeletePersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<DeletePersonRequest>
 {
     public async Task Handle(DeletePersonRequest request, CancellationToken cancellationToken)

@@ -7,11 +7,6 @@ namespace VehicleModule;
 
 public partial class ListViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
 {
-// this.WhenAnyValueSelected(
-//     x => x.SelectedVehicle,
-//     async x => 
-// );
-
     [RelayCommand]
     async Task Load()
     {

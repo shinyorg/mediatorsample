@@ -1,7 +1,7 @@
 namespace VehicleModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class DeleteVehicleRequestHandler(
     IDataService data, 
     IMediator mediator

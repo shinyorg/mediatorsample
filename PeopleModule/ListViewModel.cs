@@ -10,11 +10,8 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
 {
     [RelayCommand]
     async Task Load()
-    {
-        this.IsBusy = true;
-        this.List = await mediator.Request(new GetListRequest(), this.DeactiveToken);
-        this.IsBusy = false;
-    }
+        => this.List = await mediator.Request(new GetListRequest(), this.DeactiveToken);
+    
     
     [ObservableProperty] IReadOnlyList<PersonResult> list;
     [ObservableProperty] PersonResult? selectedPerson;

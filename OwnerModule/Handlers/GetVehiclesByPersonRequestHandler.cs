@@ -3,7 +3,7 @@ using VehicleModule.Contracts;
 namespace OwnerModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, IReadOnlyList<GetVehiclesByPersonResult>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]

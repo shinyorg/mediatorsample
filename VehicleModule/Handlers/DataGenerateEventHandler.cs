@@ -6,7 +6,7 @@ using VehicleModule.Services.Impl;
 namespace VehicleModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class DataGenerateEventHandler(
     VehicleSqliteConnection data, 
     IConfiguration configuration,

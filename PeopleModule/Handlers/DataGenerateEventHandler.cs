@@ -6,7 +6,7 @@ using SharedLib.Contracts;
 namespace PeopleModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class DataGenerateEventHandler(
     PeopleSqliteConnection data, 
     IConfiguration configuration,

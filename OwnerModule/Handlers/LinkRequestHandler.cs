@@ -3,7 +3,7 @@ using Shiny.Mediator.Middleware;
 namespace OwnerModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class LinkRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<LinkRequest>
 {
     [UserNotify(ErrorTitle = "Error", ErrorMessage = "Failed to manage link")]

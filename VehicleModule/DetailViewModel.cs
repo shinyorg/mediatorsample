@@ -26,21 +26,20 @@ public partial class DetailViewModel(
             // go idea to safety this
             this.vehicle = await data.GetById(request.VehicleId, CancellationToken.None);
             this.Title = this.vehicle!.Name;
-
-            this.LoadCommand.Execute(null);
         }
+        this.LoadCommand.Execute(null);
     }
 
 
     [RelayCommand]
     async Task Load()
     {
-        var owners = await mediator.Request(
+        var list = await mediator.Request(
             new GetPeopleByVehicleRequest(this.vehicle!.Id),
             this.DeactiveToken
         );
         
-        this.Owners = owners
+        this.Owners = list
             .Select(person => new ItemViewModel(
                 person,
                 new AsyncRelayCommand(() =>

@@ -21,9 +21,8 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
             var request = parameters.GetRequired<DetailNavRequest>();
             this.person = await data.GetById(request.PersonId, CancellationToken.None);
             this.Title = this.person!.FullName;
-
-            this.LoadCommand.Execute(null);
         }
+        this.LoadCommand.Execute(null);
     }
 
 

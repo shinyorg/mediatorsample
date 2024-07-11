@@ -1,7 +1,7 @@
 namespace PeopleModule.Handlers;
 
 
-[RegisterHandler]
+[SingletonHandler]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<PersonResult>>
 {
     public async Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, CancellationToken cancellationToken)
