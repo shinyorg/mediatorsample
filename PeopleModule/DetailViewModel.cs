@@ -39,10 +39,10 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
         this.Vehicles = vehicles
             .Select(vehicle => new ItemViewModel(
                 vehicle,
-                ReactiveCommand.CreateFromTask(() =>
+                new AsyncRelayCommand(() =>
                     mediator.Send(new VehicleModule.Contracts.DetailNavRequest(vehicle.Id) { Navigator = this.Navigation })
                 ),
-                ReactiveCommand.CreateFromTask(async () =>
+                new AsyncRelayCommand(async () =>
                 {
                     var confirm = await this.Dialogs.DisplayAlertAsync(
                         $"Are you sure you wish to remove '{vehicle.FullName}'?", 

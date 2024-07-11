@@ -18,8 +18,8 @@ public static class MauiProgram
             .UsePrism(
                 new DryIocContainerExtension(),
                 prism => prism.CreateWindow("NavigationPage/MainPage")
-            );
-            // .UseShiny();
+            )
+            .UseShiny();
 
         builder.Configuration.AddJsonPlatformBundle();
 #if DEBUG

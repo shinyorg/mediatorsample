@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OwnerModule.Contracts;
 using SharedLib;
@@ -26,26 +27,26 @@ public partial class DetailViewModel(
             this.vehicle = await data.GetById(request.VehicleId, CancellationToken.None);
             this.Title = this.vehicle!.Name;
 
-            this.Load.Execute(null);
+            this.LoadCommand.Execute(null);
         }
     }
 
 
-    ICommand? load;
-    public ICommand Load => this.load ??= ReactiveCommand.CreateFromTask(async () =>
+    [RelayCommand]
+    async Task Load()
     {
         var owners = await mediator.Request(
             new GetPeopleByVehicleRequest(this.vehicle!.Id),
             this.DeactiveToken
         );
-
+        
         this.Owners = owners
             .Select(person => new ItemViewModel(
                 person,
-                ReactiveCommand.CreateFromTask(() =>
+                new AsyncRelayCommand(() =>
                     mediator.Send(new PeopleModule.Contracts.DetailNavRequest(person.Id) { Navigator = this.Navigation })
                 ),
-                ReactiveCommand.CreateFromTask(async () =>
+                new AsyncRelayCommand(async () =>
                 {
                     var confirm = await this.Dialogs.DisplayAlertAsync(
                         $"Are you sure you wish to delete '{this.vehicle!.Name}'?", 
@@ -62,7 +63,7 @@ public partial class DetailViewModel(
                 })
             ))
             .ToList();
-    });
+    }
 
 
     [RelayCommand]
@@ -86,7 +87,7 @@ public partial class DetailViewModel(
         }
     }
 
-    [Reactive] public IReadOnlyList<ItemViewModel> Owners { get; private set; } = null!;
+    [ObservableProperty] IReadOnlyList<ItemViewModel> owners;
 }
 
 

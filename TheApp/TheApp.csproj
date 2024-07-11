@@ -81,6 +81,7 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" Condition="'$(Configuration)' == 'Debug'"/>
         <PackageReference Include="Shiny.Extensions.Configuration" Version="$(ShinyVersion)"/>
+        <PackageReference Include="Shiny.Hosting.Maui" Version="$(ShinyVersion)"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -1,3 +1,4 @@
+using System.Reactive.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SharedLib;
@@ -10,18 +11,16 @@ namespace OwnerModule;
 
 public partial class LinkViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
 {
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanExecuteCmd))]
     async Task Add()
     {
         await mediator.Send(new LinkRequest(this.SelectedPerson!.Id, this.SelectedVehicle!.Id, true));
         await this.Navigation.GoBackAsync();
         await this.Dialogs.DisplayAlertAsync("Owner Added", "Done", "Ok");
-        // this.WhenAny(
-        //     x => x.SelectedPerson,
-        //     x => x.SelectedVehicle,
-        //     (p, v) => p.GetValue() != null && v.GetValue() != null
-        // )
     }
+
+    bool CanExecuteCmd() => this.SelectedPerson != null && this.SelectedVehicle != null;
+    
 
     [ObservableProperty] IReadOnlyList<PersonResult> people;
     [ObservableProperty] IReadOnlyList<VehicleResult> vehicles;
@@ -30,8 +29,17 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
     [ObservableProperty] string addText;
     [ObservableProperty] bool isVehicleEnabled;
     [ObservableProperty] bool isPersonEnabled;
-    
-    
+
+
+    public override void OnAppearing()
+    {
+        base.OnAppearing();
+        this.WhenAnyProperty()
+            .Subscribe(_ => this.AddCommand.NotifyCanExecuteChanged());
+        // .DisposedBy();
+
+    }
+
     public override async void OnNavigatedTo(INavigationParameters parameters)
     {
         base.OnNavigatedTo(parameters);
