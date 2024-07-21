@@ -11,11 +11,11 @@ public class LinkRequestHandler(IDataService data, IMediator mediator) : IReques
     {
         if (request.Link)
         {
-            await data.Add(request.VehicleId, request.PersonId, cancellationToken);
+            await data.Add(request.VehicleId!.Value, request.PersonId!.Value, cancellationToken);
         }
         else
         {
-            await data.Remove(request.VehicleId, request.PersonId, cancellationToken);
+            await data.Remove(request.VehicleId!.Value, request.PersonId!.Value, cancellationToken);
         }
 
         // we'll tell cache to flush here

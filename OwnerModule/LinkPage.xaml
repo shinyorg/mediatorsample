@@ -15,7 +15,9 @@
                                SelectedItem="{Binding SelectedPerson}"
                                IsEnabled="{Binding IsPersonEnabled}"
                                UsePickToClose="True"
-                               DisplayMember="FullName" />
+                               DisplayMember="FullName"
+                               HintTextColor="Red"
+                               HintText="{Binding PersonErrorMessage}" />
                 
                 <sv:PickerCell Title="Vehicle" 
                                SelectionMode="Single"
@@ -23,7 +25,9 @@
                                SelectedItem="{Binding SelectedVehicle}"
                                IsEnabled="{Binding IsVehicleEnabled}"
                                UsePickToClose="True"
-                               DisplayMember="Name" />
+                               DisplayMember="Name" 
+                               HintTextColor="Red"
+                               HintText="{Binding VehicleErrorMessage}" />
             </sv:Section>
             
             <sv:Section>

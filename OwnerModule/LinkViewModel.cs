@@ -1,4 +1,3 @@
-using System.Reactive.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SharedLib;
@@ -11,32 +10,44 @@ namespace OwnerModule;
 
 public partial class LinkViewModel(BaseServices services, IMediator mediator) : ViewModel(services)
 {
-    [RelayCommand(CanExecute = nameof(CanExecuteCmd))]
+    [RelayCommand]
     async Task Add()
     {
-        await mediator.Send(new LinkRequest(this.SelectedPerson!.Id, this.SelectedVehicle!.Id, true));
-        await this.Navigation.GoBackAsync();
-        await this.Dialogs.DisplayAlertAsync("Owner Added", "Done", "Ok");
+        try
+        {
+            this.PersonErrorMessage = null;
+            this.VehicleErrorMessage = null;
+            
+            await mediator.Send(new LinkRequest
+            {
+                PersonId = this.SelectedPerson?.Id,
+                VehicleId = this.SelectedVehicle?.Id,
+                Link = true
+            });
+            await this.Navigation.GoBackAsync();
+            await this.Dialogs.DisplayAlertAsync("Owner Added", "Done", "Ok");
+        }
+        catch (ValidateException ex)
+        {
+            if (ex.Result.Errors.ContainsKey(nameof(LinkRequest.VehicleId)))
+                this.VehicleErrorMessage = ex.Result.Errors[nameof(LinkRequest.VehicleId)].FirstOrDefault();
+            
+            if (ex.Result.Errors.ContainsKey(nameof(LinkRequest.PersonId)))
+                this.PersonErrorMessage = ex.Result.Errors[nameof(LinkRequest.PersonId)].FirstOrDefault();
+        }
     }
-
-    bool CanExecuteCmd() => this.SelectedPerson != null && this.SelectedVehicle != null;
     
 
     [ObservableProperty] IReadOnlyList<PersonResult> people;
     [ObservableProperty] IReadOnlyList<VehicleResult> vehicles;
     [ObservableProperty] VehicleResult? selectedVehicle;
     [ObservableProperty] PersonResult? selectedPerson;
-    [ObservableProperty] string addText;
+    [ObservableProperty] string? addText;
     [ObservableProperty] bool isVehicleEnabled;
     [ObservableProperty] bool isPersonEnabled;
-
-
-    public override void OnAppearing()
-    {
-        base.OnAppearing();
-        this.WhenAnyProperty()
-            .Subscribe(_ => this.AddCommand.NotifyCanExecuteChanged());
-    }
+    [ObservableProperty] string? personErrorMessage;
+    [ObservableProperty] string? vehicleErrorMessage;
+    
 
     public override async void OnNavigatedTo(INavigationParameters parameters)
     {

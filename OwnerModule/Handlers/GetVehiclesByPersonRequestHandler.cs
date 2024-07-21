@@ -4,18 +4,20 @@ namespace OwnerModule.Handlers;
 
 
 [SingletonHandler]
-public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, IReadOnlyList<GetVehiclesByPersonResult>>
+public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, TimestampedResult<IReadOnlyList<GetVehiclesByPersonResult>>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
-    public async Task<IReadOnlyList<GetVehiclesByPersonResult>> Handle(GetVehiclesByPersonRequest request, CancellationToken cancellationToken)
+    public async Task<TimestampedResult<IReadOnlyList<GetVehiclesByPersonResult>>> Handle(GetVehiclesByPersonRequest request, CancellationToken cancellationToken)
     {
         var vehicleIds = await data.GetVehicleIdsByPersonId(request.PersonId, cancellationToken);
         if (vehicleIds.Length == 0)
-            return Array.Empty<GetVehiclesByPersonResult>();
+            return new TimestampedResult<IReadOnlyList<GetVehiclesByPersonResult>>(DateTimeOffset.UtcNow, Array.Empty<GetVehiclesByPersonResult>());
         
         var results = await mediator.Request(new GetListRequest(vehicleIds), cancellationToken);
-        return results
+        var list = results
             .Select(static x => new GetVehiclesByPersonResult(x.Id, x.Manufacturer, x.Model))
             .ToList();
+
+        return new TimestampedResult<IReadOnlyList<GetVehiclesByPersonResult>>(DateTimeOffset.UtcNow, list);
     }
 }

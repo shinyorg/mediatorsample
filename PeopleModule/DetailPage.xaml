@@ -13,8 +13,11 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <Grid RowDefinitions="*, Auto">
-            <ScrollView Grid.Row="0">
+        <Grid RowDefinitions="Auto, *, Auto">
+            <Label Text="{Binding ResultsFrom, StringFormat='From: {0}'}" 
+                   Grid.Row="0" />
+            
+            <ScrollView Grid.Row="1">
                 <StackLayout BindableLayout.ItemsSource="{Binding Vehicles}">
                     <BindableLayout.EmptyView>
                         <Label Text="Doesn't Own Any Vehicles" 
@@ -61,7 +64,7 @@
                     Command="{Binding DeleteCommand}"
                     BackgroundColor="Red"
                     TextColor="White" 
-                    Grid.Row="1" />
+                    Grid.Row="2" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

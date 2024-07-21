@@ -33,9 +33,11 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
     [RelayCommand]
     async Task Load()
     {
-        var vehicles = await mediator.Request(new GetVehiclesByPersonRequest(this.person!.Id), this.DeactiveToken);
-
-        this.Vehicles = vehicles
+        var result = await mediator.Request(new GetVehiclesByPersonRequest(this.person!.Id), this.DeactiveToken);
+        this.ResultsFrom = result.Timestamp.ToString("dddd MMMM dd, h:mm:ss t");
+        
+        this.Vehicles = result
+            .Value
             .Select(vehicle => new ItemViewModel(
                 vehicle,
                 new AsyncRelayCommand(() =>
@@ -51,7 +53,12 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
                     );
                     if (confirm)
                     {
-                        await mediator.Send(new LinkRequest(this.person.Id, vehicle.Id, false));
+                        await mediator.Send(new LinkRequest
+                        {
+                            PersonId = this.person?.Id, 
+                            VehicleId = vehicle.Id, 
+                            Link = false
+                        });
                         this.LoadCommand.Execute(null);
                         await this.Dialogs.DisplayAlertAsync($"Removed '{vehicle.FullName}' Successfully", "Done", "Ok");
                     }
@@ -74,6 +81,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
     }
 
     [ObservableProperty] IReadOnlyList<ItemViewModel> vehicles;
+    [ObservableProperty] string? resultsFrom;
 }
 
 public class ItemViewModel(GetVehiclesByPersonResult vehicle, ICommand viewVehicle, ICommand removeOwner)

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace OwnerModule.Contracts;
 
 
@@ -7,4 +9,10 @@ namespace OwnerModule.Contracts;
 /// <param name="PersonId"></param>
 /// <param name="VehicleId"></param>
 /// <param name="Link">If false, we remove the ownership link</param>
-public record LinkRequest(int PersonId, int VehicleId, bool Link) : IRequest;
+[Validate]
+public class LinkRequest : IRequest
+{
+    [Required] public int? PersonId { get; set; }
+    [Required] public int? VehicleId { get; set; }
+    public bool Link { get; set; }
+}
