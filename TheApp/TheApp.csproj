@@ -14,8 +14,6 @@
 
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
-
-        <MauiVersion>8.0.60</MauiVersion>
         <ShinyVersion>3.3.3</ShinyVersion>
 
         <!--slower build, faster runtime in DEBUG-->

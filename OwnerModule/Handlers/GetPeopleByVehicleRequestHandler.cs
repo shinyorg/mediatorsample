@@ -4,20 +4,21 @@ namespace OwnerModule.Handlers;
 
 
 [SingletonHandler]
-public class GetPeopleByVehicleRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetPeopleByVehicleRequest, TimestampedResult<IReadOnlyList<GetPeopleByVehicleResult>>>
+public class GetPeopleByVehicleRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetPeopleByVehicleRequest, TimestampedResult<ReadOnlyCollection<GetPeopleByVehicleResult>>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
-    public async Task<TimestampedResult<IReadOnlyList<GetPeopleByVehicleResult>>> Handle(GetPeopleByVehicleRequest request, CancellationToken cancellationToken)
+    public async Task<TimestampedResult<ReadOnlyCollection<GetPeopleByVehicleResult>>> Handle(GetPeopleByVehicleRequest request, CancellationToken cancellationToken)
     {
         var peopleIds = await data.GetPeopleIdsByVehicleId(request.VehicleId, cancellationToken);
         if (peopleIds.Length == 0)
-            return new TimestampedResult<IReadOnlyList<GetPeopleByVehicleResult>>(DateTimeOffset.UtcNow, Array.Empty<GetPeopleByVehicleResult>());
+            return Utils.Timestamped(Array.Empty<GetPeopleByVehicleResult>().AsReadOnly(), null);
         
         var results = await mediator.Request(new GetListRequest(peopleIds), cancellationToken);
         var list = results
             .Select(static x => new GetPeopleByVehicleResult(x.Id, x.FirstName, x.LastName))
-            .ToList();
+            .ToList()
+            .AsReadOnly();
 
-        return new TimestampedResult<IReadOnlyList<GetPeopleByVehicleResult>>(DateTimeOffset.UtcNow, list);
+        return Utils.Timestamped(list, DateTimeOffset.UtcNow);
     }
 }

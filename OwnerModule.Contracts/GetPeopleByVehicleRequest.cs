@@ -1,9 +1,8 @@
 namespace OwnerModule.Contracts;
 
-public record GetPeopleByVehicleRequest(int VehicleId) : IRequest<TimestampedResult<IReadOnlyList<GetPeopleByVehicleResult>>>, IRequestKey
+// reflectkey is used as the IRequestKey default implementation - which looks at all public/instance/getter properties that are not null and builds a key from them
+public record GetPeopleByVehicleRequest(int VehicleId) : IRequest<TimestampedResult<ReadOnlyCollection<GetPeopleByVehicleResult>>>, IRequestKey
 {
-    public string GetKey() => "GetPeopleByVehicleRequest_" + VehicleId;
-    // public string GetKey() => this.ReflectKey();
 };
 
 public record GetPeopleByVehicleResult(int Id, string FirstName, string LastName)
