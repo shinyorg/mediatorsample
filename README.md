@@ -81,7 +81,4 @@ at the service layer?  That's up to you to decide!
 > Would you really do these cross model data linking request (ie. GetPeopleByVehicleRequest, GetVehiclesByPersonRequest) - Doesn't that cause N+1 and a lot of extra chatter?
 
 Likely not because an app is generally single process.  This shows a common pattern (and often common pitfall in server side microserving).  Pick your fights &
-don't overengineer.  Well this does 
-
-## TODO
-* If navigating in a loop, if I delete the top level "detail", underneath should pop as I return
+don't overengineer.  Well this does

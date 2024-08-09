@@ -3,8 +3,8 @@
         <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-ios</PlatformTargetFrameworks>
         <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-android</PlatformTargetFrameworks>
         <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-maccatalyst</PlatformTargetFrameworks>-->
-        <MauiVersion>8.0.70</MauiVersion>
+        <MauiVersion>8.0.80</MauiVersion>
         <ShinyVersion>3.3.3</ShinyVersion>
-        <MediatorVersion>1.7.2</MediatorVersion>
+        <MediatorVersion>1.7.4</MediatorVersion>
     </PropertyGroup>
 </Project>

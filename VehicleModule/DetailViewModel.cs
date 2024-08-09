@@ -25,6 +25,11 @@ public partial class DetailViewModel(
             
             // go idea to safety this
             this.vehicle = await data.GetById(request.VehicleId, CancellationToken.None);
+            if (this.vehicle == null)
+            {
+                await this.Navigation.GoBackAsync();
+                return;
+            }
             this.Title = this.vehicle!.Name;
         }
         this.LoadCommand.Execute(null);

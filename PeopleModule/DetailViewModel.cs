@@ -20,6 +20,11 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
         {
             var request = parameters.GetRequired<DetailNavRequest>();
             this.person = await data.GetById(request.PersonId, CancellationToken.None);
+            if (this.person == null)
+            {
+                await this.Navigation.GoBackAsync();
+                return;
+            }
             this.Title = this.person!.FullName;
         }
         this.LoadCommand.Execute(null);
