@@ -39,14 +39,14 @@ public partial class DetailViewModel(
     [RelayCommand]
     async Task Load()
     {
-        var result = await mediator.Request(
+        var result = await mediator.RequestWithContext(
             new GetPeopleByVehicleRequest(this.vehicle!.Id),
             this.DeactiveToken
         );
-        this.ResultsFrom = result.Timestamp.ToString("dddd MMMM dd, h:mm:ss t");
+        this.ResultsFrom = result.Context.Cache()?.Timestamp.ToString("dddd MMMM dd, h:mm:ss t") ?? "-";
         
         this.Owners = result
-            .Value
+            .Result
             .Select(person => new ItemViewModel(
                 person,
                 new AsyncRelayCommand(() =>

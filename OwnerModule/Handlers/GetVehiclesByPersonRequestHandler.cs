@@ -5,14 +5,14 @@ namespace OwnerModule.Handlers;
 
 
 [SingletonHandler]
-public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, TimestampedResult<ReadOnlyCollection<GetVehiclesByPersonResult>>>
+public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, ReadOnlyCollection<GetVehiclesByPersonResult>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
-    public async Task<TimestampedResult<ReadOnlyCollection<GetVehiclesByPersonResult>>> Handle(GetVehiclesByPersonRequest request, CancellationToken cancellationToken)
+    public async Task<ReadOnlyCollection<GetVehiclesByPersonResult>> Handle(GetVehiclesByPersonRequest request, CancellationToken cancellationToken)
     {
         var vehicleIds = await data.GetVehicleIdsByPersonId(request.PersonId, cancellationToken);
         if (vehicleIds.Length == 0)
-            return Utils.Timestamped(Array.Empty<GetVehiclesByPersonResult>().AsReadOnly(), DateTimeOffset.UtcNow);
+            return Array.Empty<GetVehiclesByPersonResult>().AsReadOnly();
         
         var results = await mediator.Request(new GetListRequest(vehicleIds), cancellationToken);
         var list = results
@@ -20,6 +20,6 @@ public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator medi
             .ToList()
             .AsReadOnly();
 
-        return Utils.Timestamped(list);
+        return list;
     }
 }

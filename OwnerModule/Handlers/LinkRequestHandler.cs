@@ -1,12 +1,9 @@
-using Shiny.Mediator.Middleware;
-
 namespace OwnerModule.Handlers;
 
 
 [SingletonHandler]
 public class LinkRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<LinkRequest>
 {
-    [UserNotify(ErrorTitle = "Error", ErrorMessage = "Failed to manage link")]
     public async Task Handle(LinkRequest request, CancellationToken cancellationToken)
     {
         if (request.Link)

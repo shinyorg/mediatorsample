@@ -68,8 +68,6 @@
         <MauiFont Include="Resources\Fonts\*"/>
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
         <MauiAsset Include="appsettings.json" LogicalName="appsettings.json"/>
-        <MauiAsset Include="appsettings.android.json" LogicalName="appsettings.android.json"/>
-        <MauiAsset Include="appsettings.apple.json" LogicalName="appsettings.apple.json"/>
 
         <Content Remove="**\appsettings.json"/>
         <Content Remove="**\appsettings.*.json"/>
