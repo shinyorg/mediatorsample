@@ -1,5 +1,4 @@
 using PeopleModule.Contracts;
-using Shiny.Mediator.Middleware;
 using VehicleModule.Contracts;
 
 namespace OwnerModule.Handlers;

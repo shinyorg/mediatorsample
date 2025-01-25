@@ -7,5 +7,6 @@
         <MauiVersion>9.0.30</MauiVersion>
         <ShinyVersion>3.3.4</ShinyVersion>
         <MediatorVersion>3.1.1</MediatorVersion>
+        <MicrosoftVersion>9.0.1</MicrosoftVersion>
     </PropertyGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using SharedLib;
 using SharedLib.Contracts;
+using ICommand = System.Windows.Input.ICommand;
 
 namespace TheApp;
 

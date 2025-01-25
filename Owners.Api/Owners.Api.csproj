@@ -4,17 +4,13 @@
         <TargetFramework>$(BaseTargetFramework)</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-
-        <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)/../TheApp/</OpenApiDocumentsDirectory>
-        <OpenApiGenerateDocuments>true</OpenApiGenerateDocuments>
-        <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Shiny.Mediator.AspNet" Version="$(MediatorVersion)"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
-        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.1">
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="$(MicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="$(MicrosoftVersion)">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
