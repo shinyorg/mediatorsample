@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OwnerModule.Contracts;
 using SharedLib;
+using ICommand = System.Windows.Input.ICommand;
 using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace VehicleModule;
@@ -62,7 +63,7 @@ public partial class DetailViewModel(
                     );
                     if (confirm)
                     {
-                        await mediator.Send(new DeleteVehicleRequest(this.vehicle.Id), this.DeactiveToken);
+                        await mediator.Send(new DeleteVehicleCommand(this.vehicle.Id), this.DeactiveToken);
                         await this.Navigation.GoBackAsync();
                         await this.Dialogs.DisplayAlertAsync($"'{this.vehicle.Name}' Successfully Deleted", "Done", "Ok");
                     }
@@ -73,7 +74,7 @@ public partial class DetailViewModel(
 
 
     [RelayCommand]
-    Task AddOwner() => mediator.Send(new LinkNavRequest(null, this.vehicle!.Id) { Navigator = this.Navigation });
+    Task AddOwner() => mediator.Send(new LinkNavCommand(null, this.vehicle!.Id) { Navigator = this.Navigation });
 
 
     [RelayCommand]
@@ -87,7 +88,7 @@ public partial class DetailViewModel(
         );
         if (confirm)
         {
-            await mediator.Send(new DeleteVehicleRequest(this.vehicle!.Id), CancellationToken.None);
+            await mediator.Send(new DeleteVehicleCommand(this.vehicle!.Id), CancellationToken.None);
             await this.Navigation.GoBackAsync();
             await this.Dialogs.DisplayAlertAsync($"{this.vehicle.Name} deleted successfully!", "Done", "Ok");
         }

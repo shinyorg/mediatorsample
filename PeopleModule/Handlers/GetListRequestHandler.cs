@@ -4,7 +4,7 @@ namespace PeopleModule.Handlers;
 [SingletonHandler]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<PersonResult>>
 {
-    public async Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, RequestContext<GetListRequest> context, CancellationToken cancellationToken)
     {
         var personIds = request.PersonIds ?? [];
         var people = await data.GetPeople(personIds, cancellationToken);

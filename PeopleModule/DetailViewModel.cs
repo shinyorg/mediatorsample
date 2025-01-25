@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OwnerModule.Contracts;
 using SharedLib;
+using ICommand = System.Windows.Input.ICommand;
 using NavigationMode = Prism.Navigation.NavigationMode;
 
 namespace PeopleModule;
@@ -32,7 +33,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
 
 
     [RelayCommand]
-    Task AddVehicle() => mediator.Send(new LinkNavRequest(this.person!.Id, null) { Navigator = this.Navigation });
+    Task AddVehicle() => mediator.Send(new LinkNavCommand(this.person!.Id, null) { Navigator = this.Navigation });
 
     
     [RelayCommand]
@@ -61,7 +62,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
                     );
                     if (confirm)
                     {
-                        await mediator.Send(new LinkRequest
+                        await mediator.Send(new LinkCommand
                         {
                             PersonId = this.person?.Id, 
                             VehicleId = vehicle.Id, 
@@ -82,7 +83,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
         var confirm = await this.Dialogs.DisplayAlertAsync($"Do you wish to delete '{this.person!.FullName}'?", "Confirm", "Yes", "No");
         if (confirm)
         {
-            await mediator.Send(new DeletePersonRequest(this.person.Id));
+            await mediator.Send(new DeletePersonCommand(this.person.Id));
             await this.Navigation.GoBackAsync();
             await this.Dialogs.DisplayAlertAsync($"{this.person.FullName} was deleted successfully", "Done", "OK");
         }

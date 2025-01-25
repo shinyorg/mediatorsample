@@ -8,7 +8,7 @@ namespace OwnerModule.Handlers;
 [SingletonHandler]
 public class DeleteEventHandlers(IMediator mediator, IDataService data) : IEventHandler<DeleteVehicleEvent>, IEventHandler<DeletePersonEvent>
 {
-    public async Task Handle(DeleteVehicleEvent @event, CancellationToken cancellationToken)
+    public async Task Handle(DeleteVehicleEvent @event, EventContext<DeleteVehicleEvent> context, CancellationToken cancellationToken)
     {
         await data.DeleteByVehicle(@event.VehicleId, cancellationToken);
         
@@ -17,7 +17,7 @@ public class DeleteEventHandlers(IMediator mediator, IDataService data) : IEvent
     }
 
     
-    public async Task Handle(DeletePersonEvent @event, CancellationToken cancellationToken)
+    public async Task Handle(DeletePersonEvent @event, EventContext<DeletePersonEvent> context, CancellationToken cancellationToken)
     {
         await data.DeleteByPerson(@event.PersonId, cancellationToken);
         

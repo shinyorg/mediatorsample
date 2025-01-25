@@ -7,7 +7,7 @@ namespace OwnerModule.Handlers;
 public class GetPeopleByVehicleRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetPeopleByVehicleRequest, ReadOnlyCollection<GetPeopleByVehicleResult>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
-    public async Task<ReadOnlyCollection<GetPeopleByVehicleResult>> Handle(GetPeopleByVehicleRequest request, CancellationToken cancellationToken)
+    public async Task<ReadOnlyCollection<GetPeopleByVehicleResult>> Handle(GetPeopleByVehicleRequest request, RequestContext<GetPeopleByVehicleRequest> context, CancellationToken cancellationToken)
     {
         var peopleIds = await data.GetPeopleIdsByVehicleId(request.VehicleId, cancellationToken);
         if (peopleIds.Length == 0)

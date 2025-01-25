@@ -1,10 +1,11 @@
 <Project>
     <PropertyGroup>
-        <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-ios</PlatformTargetFrameworks>
-        <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-android</PlatformTargetFrameworks>
-        <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net8.0-maccatalyst</PlatformTargetFrameworks>-->
-        <MauiVersion>8.0.91</MauiVersion>
-        <ShinyVersion>3.3.3</ShinyVersion>
-        <MediatorVersion>2.0.0</MediatorVersion>
+        <BaseTargetFramework>net9.0</BaseTargetFramework>
+        <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net9.0-ios</PlatformTargetFrameworks>
+        <PlatformTargetFrameworks>$(PlatformTargetFrameworks);net9.0-android</PlatformTargetFrameworks>
+        <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net9.0-maccatalyst</PlatformTargetFrameworks>-->
+        <MauiVersion>9.0.30</MauiVersion>
+        <ShinyVersion>3.3.4</ShinyVersion>
+        <MediatorVersion>3.1.1</MediatorVersion>
     </PropertyGroup>
 </Project>

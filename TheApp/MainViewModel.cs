@@ -13,7 +13,7 @@ public partial class MainViewModel(BaseServices services, IMediator mediator) : 
 
     [RelayCommand]
     Task NavToVehicleList() =>
-        mediator.Send(new VehicleModule.Contracts.ListNavRequest { Navigator = this.Navigation });
+        mediator.Send(new VehicleModule.Contracts.ListNavCommand { Navigator = this.Navigation });
 
     [RelayCommand]
     async Task GenerateData()

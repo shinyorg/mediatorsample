@@ -18,7 +18,7 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
             this.PersonErrorMessage = null;
             this.VehicleErrorMessage = null;
             
-            await mediator.Send(new LinkRequest
+            await mediator.Send(new LinkCommand
             {
                 PersonId = this.SelectedPerson?.Id,
                 VehicleId = this.SelectedVehicle?.Id,
@@ -29,11 +29,11 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
         }
         catch (ValidateException ex)
         {
-            if (ex.Result.Errors.ContainsKey(nameof(LinkRequest.VehicleId)))
-                this.VehicleErrorMessage = ex.Result.Errors[nameof(LinkRequest.VehicleId)].FirstOrDefault();
+            if (ex.Result.Errors.ContainsKey(nameof(LinkCommand.VehicleId)))
+                this.VehicleErrorMessage = ex.Result.Errors[nameof(LinkCommand.VehicleId)].FirstOrDefault();
             
-            if (ex.Result.Errors.ContainsKey(nameof(LinkRequest.PersonId)))
-                this.PersonErrorMessage = ex.Result.Errors[nameof(LinkRequest.PersonId)].FirstOrDefault();
+            if (ex.Result.Errors.ContainsKey(nameof(LinkCommand.PersonId)))
+                this.PersonErrorMessage = ex.Result.Errors[nameof(LinkCommand.PersonId)].FirstOrDefault();
         }
     }
     
@@ -54,7 +54,7 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
         base.OnNavigatedTo(parameters);
         if (parameters.GetNavigationMode() == NavigationMode.New)
         {
-            var request = parameters.GetRequired<LinkNavRequest>();
+            var request = parameters.GetRequired<LinkNavCommand>();
             await Task.WhenAll(this.BindPeople(), this.BindVehicles());
             
             if (request.PersonId == null)

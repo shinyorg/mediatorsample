@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
-        <PackageReference Include="Bogus" Version="35.6.0" />
+        <PackageReference Include="Bogus" Version="35.6.1" />
         <PackageReference Include="HorusStudio.Maui.Skeleton" Version="2.0.0" />
     </ItemGroup>
 </Project>

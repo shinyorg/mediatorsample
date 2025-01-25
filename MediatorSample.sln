@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwnerModule", "OwnerModule\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwnerModule.Contracts", "OwnerModule.Contracts\OwnerModule.Contracts.csproj", "{08BFECBD-83BB-4218-89C8-BCE3192DAA45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheApp.Api", "TheApp.Api\TheApp.Api.csproj", "{ED237FBE-8185-4303-B3A2-595D77AFAC39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{08BFECBD-83BB-4218-89C8-BCE3192DAA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08BFECBD-83BB-4218-89C8-BCE3192DAA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08BFECBD-83BB-4218-89C8-BCE3192DAA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED237FBE-8185-4303-B3A2-595D77AFAC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED237FBE-8185-4303-B3A2-595D77AFAC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED237FBE-8185-4303-B3A2-595D77AFAC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED237FBE-8185-4303-B3A2-595D77AFAC39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9FE80442-21F8-4F7E-A660-D8523B3BC7D6} = {F839B321-759C-462E-ABAC-17352E250E40}

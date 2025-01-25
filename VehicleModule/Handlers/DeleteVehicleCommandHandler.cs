@@ -2,14 +2,14 @@ namespace VehicleModule.Handlers;
 
 
 [SingletonHandler]
-public class DeleteVehicleRequestHandler(
+public class DeleteVehicleCommandHandler(
     IDataService data, 
     IMediator mediator
-) : IRequestHandler<DeleteVehicleRequest>
+) : ICommandHandler<DeleteVehicleCommand>
 {
-    public async Task Handle(DeleteVehicleRequest request, CancellationToken cancellationToken)
+    public async Task Handle(DeleteVehicleCommand command, CommandContext<DeleteVehicleCommand> context, CancellationToken cancellationToken)
     {
-        var vehicle = await data.GetById(request.VehicleId, cancellationToken);
+        var vehicle = await data.GetById(command.VehicleId, cancellationToken);
         if (vehicle != null)
         {
             await data.Delete(vehicle.Id, cancellationToken);

@@ -10,7 +10,7 @@ namespace OwnerModule.Contracts;
 /// <param name="VehicleId"></param>
 /// <param name="Link">If false, we remove the ownership link</param>
 [Validate]
-public class LinkRequest : IRequest
+public class LinkCommand : ICommand
 {
     [Required] public int? PersonId { get; set; }
     [Required] public int? VehicleId { get; set; }

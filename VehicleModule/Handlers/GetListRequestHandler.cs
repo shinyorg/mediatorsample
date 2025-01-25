@@ -4,7 +4,7 @@ namespace VehicleModule.Handlers;
 [SingletonHandler]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<VehicleResult>>
 {
-    public async Task<IReadOnlyList<VehicleResult>> Handle(GetListRequest request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<VehicleResult>> Handle(GetListRequest request, RequestContext<GetListRequest> context, CancellationToken cancellationToken)
     {
         var vehicles = await data.GetAll(cancellationToken);
         var ids = request.VehicleIds ?? [];
