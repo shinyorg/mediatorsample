@@ -3,3 +3,4 @@ global using PeopleModule.Services;
 global using Shiny;
 global using Microsoft.Extensions.Logging;
 global using System.Windows.Input;
+global using ICommand = System.Windows.Input.ICommand;

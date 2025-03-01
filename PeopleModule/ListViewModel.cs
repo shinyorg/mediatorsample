@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SharedLib;
-using DetailNavRequest = VehicleModule.Contracts.DetailNavRequest;
+using DetailNavCommand = VehicleModule.Contracts.DetailNavCommand;
 
 namespace PeopleModule;
 
@@ -19,7 +19,7 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
     {
         if (value != null)
         {
-            await mediator.Send(new DetailNavRequest(value.Id) { Navigator = this.Navigation });
+            await mediator.Send(new DetailNavCommand(value.Id) { Navigator = this.Navigation });
             this.SelectedPerson = null;
         }
     }

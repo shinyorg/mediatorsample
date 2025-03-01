@@ -18,7 +18,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
 
         if (parameters.GetNavigationMode() == NavigationMode.New)
         {
-            var request = parameters.GetRequired<DetailNavRequest>();
+            var request = parameters.GetRequired<DetailNavCommand>();
             this.person = await data.GetById(request.PersonId, CancellationToken.None);
             if (this.person == null)
             {
@@ -32,7 +32,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
 
 
     [RelayCommand]
-    Task AddVehicle() => mediator.Send(new LinkNavRequest(this.person!.Id, null) { Navigator = this.Navigation });
+    Task AddVehicle() => mediator.Send(new LinkNavCommand(this.person!.Id, null) { Navigator = this.Navigation });
 
     
     [RelayCommand]
@@ -49,7 +49,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
             .Select(vehicle => new ItemViewModel(
                 vehicle,
                 new AsyncRelayCommand(() =>
-                    mediator.Send(new VehicleModule.Contracts.DetailNavRequest(vehicle.Id) { Navigator = this.Navigation })
+                    mediator.Send(new VehicleModule.Contracts.DetailNavCommand(vehicle.Id) { Navigator = this.Navigation })
                 ),
                 new AsyncRelayCommand(async () =>
                 {
@@ -61,7 +61,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
                     );
                     if (confirm)
                     {
-                        await mediator.Send(new LinkRequest
+                        await mediator.Send(new LinkCommand
                         {
                             PersonId = this.person?.Id, 
                             VehicleId = vehicle.Id, 
@@ -82,7 +82,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
         var confirm = await this.Dialogs.DisplayAlertAsync($"Do you wish to delete '{this.person!.FullName}'?", "Confirm", "Yes", "No");
         if (confirm)
         {
-            await mediator.Send(new DeletePersonRequest(this.person.Id));
+            await mediator.Send(new DeletePersonCommand(this.person.Id));
             await this.Navigation.GoBackAsync();
             await this.Dialogs.DisplayAlertAsync($"{this.person.FullName} was deleted successfully", "Done", "OK");
         }

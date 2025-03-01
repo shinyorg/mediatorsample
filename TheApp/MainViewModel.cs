@@ -9,7 +9,7 @@ public partial class MainViewModel(BaseServices services, IMediator mediator) : 
 {
     [RelayCommand]
     Task NavToPeopleList() => 
-        mediator.Send(new PeopleModule.Contracts.ListNavRequest { Navigator = this.Navigation });
+        mediator.Send(new PeopleModule.Contracts.ListNavCommand { Navigator = this.Navigation });
 
     [RelayCommand]
     Task NavToVehicleList() =>

@@ -27,7 +27,7 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
     {
         if (value != null)
         {
-            await mediator.Send(new DetailNavRequest(value.Id) { Navigator = this.Navigation });
+            await mediator.Send(new DetailNavCommand(value.Id) { Navigator = this.Navigation });
             this.SelectedVehicle = null;
         }
     }

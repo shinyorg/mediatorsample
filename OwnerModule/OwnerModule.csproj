@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.12" />
+        <PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.17" />
         <ProjectReference Include="..\SharedLib\SharedLib.csproj"/>
     </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ public class DataGenerateEventHandler(
     ILogger<DataGenerateEventHandler> logger
 ) : IEventHandler<DataGenerateEvent>
 {
-    public async Task Handle(DataGenerateEvent @event, CancellationToken cancellationToken)
+    public async Task Handle(DataGenerateEvent @event, MediatorContext context, CancellationToken cancellationToken)
     {
         var count = configuration.GetValue<int>("DataGenerate:People");
         
