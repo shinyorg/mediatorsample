@@ -1,7 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SharedLib;
-using DetailNavCommand = VehicleModule.Contracts.DetailNavCommand;
 
 namespace PeopleModule;
 
