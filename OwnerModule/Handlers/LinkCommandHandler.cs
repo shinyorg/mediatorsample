@@ -4,7 +4,7 @@ namespace OwnerModule.Handlers;
 [SingletonHandler]
 public class LinkCommandHandler(IDataService data, IMediator mediator) : ICommandHandler<LinkCommand>
 {
-    public async Task Handle(LinkCommand command, MediatorContext context, CancellationToken cancellationToken)
+    public async Task Handle(LinkCommand command, IMediatorContext context, CancellationToken cancellationToken)
     {
         if (command.Link)
         {

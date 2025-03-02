@@ -7,7 +7,7 @@ public class DeleteVehicleCommandHandler(
     IMediator mediator
 ) : ICommandHandler<DeleteVehicleCommand>
 {
-    public async Task Handle(DeleteVehicleCommand command, MediatorContext context, CancellationToken cancellationToken)
+    public async Task Handle(DeleteVehicleCommand command, IMediatorContext context, CancellationToken cancellationToken)
     {
         var vehicle = await data.GetById(command.VehicleId, cancellationToken);
         if (vehicle != null)
