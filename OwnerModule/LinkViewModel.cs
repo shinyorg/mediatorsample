@@ -74,8 +74,8 @@ public partial class LinkViewModel(BaseServices services, IMediator mediator) : 
 
 
     async Task BindPeople()
-        => this.People = await mediator.Request(new PeopleModule.Contracts.GetListRequest());
+        => this.People = (await mediator.Request(new PeopleModule.Contracts.GetListRequest())).Result;
 
     async Task BindVehicles()
-        => this.Vehicles = await mediator.Request(new VehicleModule.Contracts.GetListRequest());
+        => this.Vehicles = (await mediator.Request(new VehicleModule.Contracts.GetListRequest())).Result;
 }

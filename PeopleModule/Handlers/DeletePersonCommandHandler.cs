@@ -2,7 +2,7 @@ namespace PeopleModule.Handlers;
 
 
 [SingletonHandler]
-public class DeletePersonCommandHandler(IDataService data, IMediator mediator) : ICommandHandler<DeletePersonCommand>
+public class DeletePersonCommandHandler(IDataService data) : ICommandHandler<DeletePersonCommand>
 {
     public async Task Handle(DeletePersonCommand command, IMediatorContext context, CancellationToken cancellationToken)
     {
@@ -10,8 +10,9 @@ public class DeletePersonCommandHandler(IDataService data, IMediator mediator) :
         if (person != null)
         {
             await data.Delete(command.PersonId, cancellationToken);
-            await mediator.Publish(
+            await context.Publish(
                 new DeletePersonEvent(person.Id, person.FirstName, person.LastName), 
+                true,
                 cancellationToken
             );
         }

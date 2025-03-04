@@ -38,7 +38,7 @@ public partial class DetailViewModel(BaseServices services, IDataService data, I
     [RelayCommand]
     async Task Load()
     {
-        var context = await mediator.RequestWithContext(
+        var context = await mediator.Request(
             new GetVehiclesByPersonRequest(this.person!.Id), 
             this.DeactiveToken
         );

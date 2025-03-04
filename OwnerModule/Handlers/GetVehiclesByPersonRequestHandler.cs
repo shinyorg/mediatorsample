@@ -14,7 +14,7 @@ public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator medi
         if (vehicleIds.Length == 0)
             return Array.Empty<GetVehiclesByPersonResult>().AsReadOnly();
         
-        var results = await mediator.Request(new GetListRequest(vehicleIds), cancellationToken);
+        var results = (await mediator.Request(new GetListRequest(vehicleIds), cancellationToken)).Result;
         var list = results
             .Select(static x => new GetVehiclesByPersonResult(x.Id, x.Manufacturer, x.Model))
             .ToList()

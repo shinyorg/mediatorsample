@@ -10,7 +10,7 @@ public partial class ListViewModel(BaseServices services, IMediator mediator) : 
     [RelayCommand]
     async Task Load()
     {
-        this.List = await mediator.Request(new GetListRequest(), this.DeactiveToken);
+        this.List = (await mediator.Request(new GetListRequest(), this.DeactiveToken)).Result;
     }
 
     public override void OnAppearing()

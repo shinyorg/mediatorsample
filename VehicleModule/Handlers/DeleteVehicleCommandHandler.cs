@@ -2,10 +2,7 @@ namespace VehicleModule.Handlers;
 
 
 [SingletonHandler]
-public class DeleteVehicleCommandHandler(
-    IDataService data, 
-    IMediator mediator
-) : ICommandHandler<DeleteVehicleCommand>
+public class DeleteVehicleCommandHandler(IDataService data) : ICommandHandler<DeleteVehicleCommand>
 {
     public async Task Handle(DeleteVehicleCommand command, IMediatorContext context, CancellationToken cancellationToken)
     {
@@ -13,8 +10,9 @@ public class DeleteVehicleCommandHandler(
         if (vehicle != null)
         {
             await data.Delete(vehicle.Id, cancellationToken);
-            await mediator.Publish(
+            await context.Publish(
                 new DeleteVehicleEvent(vehicle.Id, vehicle.Manufacturer, vehicle.Model),
+                true,
                 cancellationToken
             );
         }

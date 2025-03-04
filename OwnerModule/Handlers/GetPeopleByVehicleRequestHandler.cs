@@ -13,7 +13,7 @@ public class GetPeopleByVehicleRequestHandler(IDataService data, IMediator media
         if (peopleIds.Length == 0)
             return Array.Empty<GetPeopleByVehicleResult>().AsReadOnly();
         
-        var results = await mediator.Request(new GetListRequest(peopleIds), cancellationToken);
+        var results = (await mediator.Request(new GetListRequest(peopleIds), cancellationToken)).Result;
         var list = results
             .Select(static x => new GetPeopleByVehicleResult(x.Id, x.FirstName, x.LastName))
             .ToList()

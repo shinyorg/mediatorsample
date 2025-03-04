@@ -40,7 +40,7 @@ public partial class DetailViewModel(
     [RelayCommand]
     async Task Load()
     {
-        var result = await mediator.RequestWithContext(
+        var result = await mediator.Request(
             new GetPeopleByVehicleRequest(this.vehicle!.Id),
             this.DeactiveToken
         );
