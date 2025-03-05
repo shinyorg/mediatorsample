@@ -6,6 +6,6 @@
         <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net9.0-maccatalyst</PlatformTargetFrameworks>-->
         <MauiVersion>9.0.40</MauiVersion>
         <ShinyVersion>3.3.4</ShinyVersion>
-        <MediatorVersion>4.0.0-beta-0017</MediatorVersion>
+        <MediatorVersion>4.0.0</MediatorVersion>
     </PropertyGroup>
 </Project>
