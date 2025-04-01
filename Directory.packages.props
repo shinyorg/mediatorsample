@@ -1,0 +1,29 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <PackageVersion Include="Bogus" Version="35.6.2"/>
+        <PackageVersion Include="HorusStudio.Maui.Skeleton" Version="2.0.0"/>
+        <PackageVersion Include="AiForms.Maui.SettingsView" Version="1.0.17"/>
+
+        <PackageVersion Include="Prism.DryIoc.Maui" Version="9.0.537"/>
+        <PackageVersion Include="sqlite-net-pcl" Version="1.9.172"/>
+        <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.2"/>
+        <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2"/>
+        <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
+
+        <PackageVersion Include="CommunityToolkit.Maui" Version="11.1.0"/>
+        <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
+        <PackageVersion Include="Shiny.Core" Version="4.0.0-beta-0057"/>
+        <PackageVersion Include="Shiny.Extensions.Configuration" Version="4.0.0-beta-0057"/>
+        <PackageVersion Include="Shiny.Hosting.Maui" Version="4.0.0-beta-0057"/>
+
+        <PackageVersion Include="Shiny.Mediator" Version="4.1.0"/>
+        <PackageVersion Include="Shiny.Mediator.Maui" Version="4.1.0"/>
+        <PackageVersion Include="Shiny.Mediator.Contracts" Version="4.1.0"/>
+        <PackageVersion Include="Shiny.Mediator.Prism" Version="4.1.0"/>
+    </ItemGroup>
+</Project>

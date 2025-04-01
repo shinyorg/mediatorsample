@@ -7,15 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Prism.DryIoc.Maui" Version="9.0.537"/>
-        <PackageReference Include="sqlite-net-pcl" Version="1.9.172"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.2" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-        <PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="Shiny.Core" Version="$(ShinyVersion)" />
-        <PackageReference Include="Shiny.Mediator" Version="$(MediatorVersion)" />
-        <PackageReference Include="Shiny.Mediator.Maui" Version="$(MediatorVersion)" />
+        <PackageReference Include="Prism.DryIoc.Maui"/>
+        <PackageReference Include="sqlite-net-pcl"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder"/>
+        <PackageReference Include="Microsoft.Maui.Controls"/>
+        <PackageReference Include="CommunityToolkit.Maui"/>
+        <PackageReference Include="CommunityToolkit.Mvvm"/>
+        <PackageReference Include="Shiny.Core"/>
+        <PackageReference Include="Shiny.Mediator"/>
+        <PackageReference Include="Shiny.Mediator.Maui"/>
     </ItemGroup>
 
     <ItemGroup>

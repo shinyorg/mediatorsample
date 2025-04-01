@@ -1,0 +1,18 @@
+﻿<Solution>
+  <Folder Name="/Features/">
+    <Project Path="OwnerModule.Contracts\OwnerModule.Contracts.csproj" Type="Classic C#" />
+    <Project Path="OwnerModule\OwnerModule.csproj" Type="Classic C#" />
+    <Project Path="PeopleModule.Contracts\PeopleModule.Contracts.csproj" Type="Classic C#" />
+    <Project Path="PeopleModule\PeopleModule.csproj" Type="Classic C#" />
+    <Project Path="VehicleModule.Contracts\VehicleModule.Contracts.csproj" Type="Classic C#" />
+    <Project Path="VehicleModule\VehicleModule.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Solution/">
+    <File Path="Directory.build.props" />
+    <File Path="Directory.build.targets" />
+    <File Path="README.md" />
+    <File Path="Directory.packages.props" />
+  </Folder>
+  <Project Path="SharedLib\SharedLib.csproj" Type="Classic C#" />
+  <Project Path="TheApp\TheApp.csproj" Type="Classic C#" />
+</Solution>

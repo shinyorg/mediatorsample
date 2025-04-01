@@ -52,9 +52,9 @@
     <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' OR $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
         <BundleResource Include="Platforms\iOS\PrivacyInfo.xcprivacy" LogicalName="PrivacyInfo.xcprivacy"/>
 
-        <CustomEntitlements Include="keychain-access-groups" Type="StringArray" Value="%24(AppIdentifierPrefix)$(ApplicationId)"/>
-        <CustomEntitlements Include="com.apple.developer.associated-domains" Type="StringArray" Value="applinks:test?mode=developer" Condition="'$(Condition)' == 'Debug'"/>
-        <CustomEntitlements Include="com.apple.developer.associated-domains" Type="StringArray" Value="applinks:test" Condition="'$(Condition)' == 'Release'"/>
+        <CustomEntitlements Include="keychain-access-groups" Type="StringArray" Value="%24(AppIdentifierPrefix)$(ApplicationId)" Visible="false"/>
+        <CustomEntitlements Include="com.apple.developer.associated-domains" Type="StringArray" Value="applinks:test?mode=developer" Condition="'$(Condition)' == 'Debug'" Visible="false"/>
+        <CustomEntitlements Include="com.apple.developer.associated-domains" Type="StringArray" Value="applinks:test" Condition="'$(Condition)' == 'Release'" Visible="false"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -73,10 +73,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" Condition="'$(Configuration)' == 'Debug'"/>
-        <PackageReference Include="Shiny.Extensions.Configuration" Version="$(ShinyVersion)"/>
-        <PackageReference Include="Shiny.Hosting.Maui" Version="$(ShinyVersion)"/>
+        <PackageReference Include="Microsoft.Maui.Controls"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Condition="'$(Configuration)' == 'Debug'"/>
+        <PackageReference Include="Shiny.Extensions.Configuration"/>
+        <PackageReference Include="Shiny.Hosting.Maui"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup>
-        <PackageReference Include="Shiny.Mediator.Contracts" Version="$(MediatorVersion)" />
-        <PackageReference Include="Shiny.Mediator.Prism" Version="$(MediatorVersion)" />
+        <PackageReference Include="Shiny.Mediator.Contracts"/>
+        <PackageReference Include="Shiny.Mediator.Prism"/>
     </ItemGroup>
 </Project>
