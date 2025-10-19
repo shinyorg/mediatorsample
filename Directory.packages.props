@@ -1,28 +1,21 @@
 <Project>
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <MediatorVersion>5.0.0-beta-0008</MediatorVersion>
     </PropertyGroup>
-
     <ItemGroup>
         <PackageVersion Include="Bogus" Version="35.6.3"/>
         <PackageVersion Include="HorusStudio.Maui.Skeleton" Version="2.0.0"/>
         <PackageVersion Include="AiForms.Maui.SettingsView" Version="1.0.17"/>
-
         <PackageVersion Include="Prism.DryIoc.Maui" Version="9.0.537"/>
         <PackageVersion Include="sqlite-net-pcl" Version="1.9.172"/>
-        <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4"/>
-        <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4"/>
+        <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10"/>
         <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
-
-        <PackageVersion Include="CommunityToolkit.Maui" Version="11.2.0"/>
+        <PackageVersion Include="CommunityToolkit.Maui" Version="12.2.0"/>
         <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
-        <PackageVersion Include="Shiny.Core" Version="4.0.0-beta-0069"/>
-        <PackageVersion Include="Shiny.Extensions.Configuration" Version="4.0.0-beta-0069"/>
-        <PackageVersion Include="Shiny.Hosting.Maui" Version="4.0.0-beta-0069"/>
-
-        <PackageVersion Include="Shiny.Mediator" Version="4.2.1"/>
-        <PackageVersion Include="Shiny.Mediator.Maui" Version="4.2.1"/>
-        <PackageVersion Include="Shiny.Mediator.Contracts" Version="4.2.1"/>
-        <PackageVersion Include="Shiny.Mediator.Prism" Version="4.2.1"/>
+        <PackageVersion Include="Shiny.Extensions.Configuration" Version="4.0.0-beta-0093"/>
+        <PackageVersion Include="Shiny.Mediator.Maui" Version="$(MediatorVersion)"/>
+        <PackageVersion Include="Shiny.Mediator.Contracts" Version="$(MediatorVersion)"/>
+        <PackageVersion Include="Shiny.Mediator.Prism" Version="$(MediatorVersion)"/>
     </ItemGroup>
 </Project>

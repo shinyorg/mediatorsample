@@ -1,7 +1,7 @@
 namespace VehicleModule.Handlers;
 
 
-[SingletonHandler]
+[MediatorSingleton]
 public class DeleteVehicleCommandHandler(IDataService data) : ICommandHandler<DeleteVehicleCommand>
 {
     public async Task Handle(DeleteVehicleCommand command, IMediatorContext context, CancellationToken cancellationToken)

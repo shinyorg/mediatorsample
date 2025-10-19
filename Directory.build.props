@@ -5,6 +5,6 @@
         <PlatformTargetFrameworks>$(PlatformTargetFrameworks);$(BaseTargetFramework)-android</PlatformTargetFrameworks>
         <!--<PlatformTargetFrameworks>$(PlatformTargetFrameworks);net9.0-maccatalyst</PlatformTargetFrameworks>-->
         
-        <MauiVersion>9.0.60</MauiVersion>
+        <MauiVersion>9.0.120</MauiVersion>
     </PropertyGroup>
 </Project>

@@ -18,8 +18,7 @@ public static class Registration
         builder.Services.AddSingleton<OwnerSqliteConnection>();
         builder.Services.AddSingleton<IDataService, DataService>();
         
-        // register source generated handlers
-        builder.Services.AddDiscoveredMediatorHandlersFromOwnerModule();
+        // handlers & middleware for mediator are registered via a module initializer
         return builder;
     }
 }

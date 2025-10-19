@@ -5,7 +5,7 @@ namespace OwnerModule.Services.Impl;
 
 public class OwnerSqliteConnection : SQLiteAsyncConnection
 {
-    public OwnerSqliteConnection(IPlatform platform, ILogger<OwnerSqliteConnection> logger) : base(Path.Combine(platform.AppData.FullName, "owners.db"), true)
+    public OwnerSqliteConnection(ILogger<OwnerSqliteConnection> logger) : base(Path.Combine(FileSystem.AppDataDirectory, "owners.db"), true)
     {
         var c = this.GetConnection();
         c.CreateTable<OwnerModel>();

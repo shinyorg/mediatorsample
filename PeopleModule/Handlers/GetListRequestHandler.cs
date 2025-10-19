@@ -1,7 +1,7 @@
 namespace PeopleModule.Handlers;
 
 
-[SingletonHandler]
+[MediatorSingleton]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<PersonResult>>
 {
     public async Task<IReadOnlyList<PersonResult>> Handle(GetListRequest request, IMediatorContext context, CancellationToken cancellationToken)

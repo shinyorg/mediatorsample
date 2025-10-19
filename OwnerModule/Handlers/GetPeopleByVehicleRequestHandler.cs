@@ -3,8 +3,8 @@ using PeopleModule.Contracts;
 namespace OwnerModule.Handlers;
 
 
-[SingletonHandler]
-public class GetPeopleByVehicleRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetPeopleByVehicleRequest, ReadOnlyCollection<GetPeopleByVehicleResult>>
+[MediatorSingleton]
+public partial class GetPeopleByVehicleRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetPeopleByVehicleRequest, ReadOnlyCollection<GetPeopleByVehicleResult>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
     public async Task<ReadOnlyCollection<GetPeopleByVehicleResult>> Handle(GetPeopleByVehicleRequest request, IMediatorContext context, CancellationToken cancellationToken)

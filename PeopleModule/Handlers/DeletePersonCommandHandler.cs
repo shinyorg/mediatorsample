@@ -1,7 +1,7 @@
 namespace PeopleModule.Handlers;
 
 
-[SingletonHandler]
+[MediatorSingleton]
 public class DeletePersonCommandHandler(IDataService data) : ICommandHandler<DeletePersonCommand>
 {
     public async Task Handle(DeletePersonCommand command, IMediatorContext context, CancellationToken cancellationToken)

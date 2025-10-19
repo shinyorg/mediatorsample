@@ -76,7 +76,6 @@
         <PackageReference Include="Microsoft.Maui.Controls"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Condition="'$(Configuration)' == 'Debug'"/>
         <PackageReference Include="Shiny.Extensions.Configuration"/>
-        <PackageReference Include="Shiny.Hosting.Maui"/>
     </ItemGroup>
 
     <ItemGroup>

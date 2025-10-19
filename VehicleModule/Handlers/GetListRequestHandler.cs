@@ -1,7 +1,7 @@
 namespace VehicleModule.Handlers;
 
 
-[SingletonHandler]
+[MediatorSingleton]
 public class GetListRequestHandler(IDataService data) : IRequestHandler<GetListRequest, IReadOnlyList<VehicleResult>>
 {
     public async Task<IReadOnlyList<VehicleResult>> Handle(GetListRequest request, IMediatorContext context, CancellationToken cancellationToken)

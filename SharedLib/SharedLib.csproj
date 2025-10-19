@@ -9,12 +9,9 @@
     <ItemGroup>
         <PackageReference Include="Prism.DryIoc.Maui"/>
         <PackageReference Include="sqlite-net-pcl"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder"/>
         <PackageReference Include="Microsoft.Maui.Controls"/>
         <PackageReference Include="CommunityToolkit.Maui"/>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
-        <PackageReference Include="Shiny.Core"/>
-        <PackageReference Include="Shiny.Mediator"/>
         <PackageReference Include="Shiny.Mediator.Maui"/>
     </ItemGroup>
 

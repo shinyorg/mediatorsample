@@ -1,11 +1,10 @@
-using System.Collections.ObjectModel;
 using VehicleModule.Contracts;
 
 namespace OwnerModule.Handlers;
 
 
-[SingletonHandler]
-public class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, ReadOnlyCollection<GetVehiclesByPersonResult>>
+[MediatorSingleton]
+public partial class GetVehiclesByPersonRequestHandler(IDataService data, IMediator mediator) : IRequestHandler<GetVehiclesByPersonRequest, ReadOnlyCollection<GetVehiclesByPersonResult>>
 {
     [Cache(AbsoluteExpirationSeconds = 60)]
     public async Task<ReadOnlyCollection<GetVehiclesByPersonResult>> Handle(GetVehiclesByPersonRequest request, IMediatorContext context, CancellationToken cancellationToken)

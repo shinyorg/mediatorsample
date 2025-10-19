@@ -5,7 +5,7 @@ namespace PeopleModule.Services.Impl;
 
 public class PeopleSqliteConnection : SQLiteAsyncConnection
 {
-    public PeopleSqliteConnection(IPlatform platform, ILogger<PeopleSqliteConnection> logger) : base(Path.Combine(platform.AppData.FullName, "people.db"), true)
+    public PeopleSqliteConnection(ILogger<PeopleSqliteConnection> logger) : base(Path.Combine(FileSystem.AppDataDirectory, "people.db"), true)
     {
         var c = this.GetConnection();
         c.CreateTable<PersonModel>();
