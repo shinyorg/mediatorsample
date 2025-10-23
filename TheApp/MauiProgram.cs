@@ -25,21 +25,12 @@ public static class MauiProgram
         builder.Logging.SetMinimumLevel(LogLevel.Trace);
         builder.Logging.AddDebug();
 #endif
-
-
-
-        var servs = builder.Services.Where(x => x is { ServiceType: not null, ImplementationType: not null }).ToList();
-        foreach (var service in servs)
-        {
-            Console.WriteLine($"{service.ServiceType.FullName} - {service.Lifetime} - {service.ImplementationType!.FullName}");
-        }
         builder.AddPeopleModule();
         builder.AddVehicleModule();
         builder.AddOwnerModule();
         
         // module initializers don't run until they're actual library is hit
         builder.Services.AddShinyMediator(x => x
-            .AddRegistry()
             .AddMauiPersistentCache()
             .AddDataAnnotations()
             .AddPrismSupport()

@@ -1,6 +1,9 @@
-# End-To-End Shiny Mediator Sample
+# End-To-End Enterprise Shiny Mediator Sample
 
-This shows a lot of good practices when it comes to constructing .NET MAUI applications.  
+This shows a lot of good practices when it comes to constructing .NET MAUI applications.
+
+By Enterprise, we mean applications written by large teams, often in modules, that also need to cross talk and navigate.
+This sample application shows all of these traits using Shiny.Mediator and Prism.
 
 ## Shiny Mediator
 * [GitHub](https://github.com/shinyorg/mediator)

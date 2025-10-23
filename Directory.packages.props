@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        <MediatorVersion>5.0.0-beta-0009</MediatorVersion>
+        <MediatorVersion>5.0.0-beta-0012</MediatorVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageVersion Include="Bogus" Version="35.6.3"/>

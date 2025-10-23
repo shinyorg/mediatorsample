@@ -15,7 +15,8 @@ public static class Registration
         builder.Services.AddSingleton<PeopleSqliteConnection>();
         builder.Services.AddSingleton<IDataService, DataService>();
 
-        // handlers & middleware for mediator are registered via a module initializer
+        // source generated registrations
+        builder.Services.AddMediatorRegistry();
         return builder;
     }
 }
